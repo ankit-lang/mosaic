@@ -1,0 +1,94 @@
+.infoSection {
+  background-color: #080808;
+  position: relative;
+}
+
+.infoSection::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.3), transparent);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+@media (min-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.infoCard {
+  background: rgba(20, 20, 20, 0.5);
+  border: 1px solid rgba(212, 175, 55, 0.1);
+  padding: 3rem 2rem;
+  border-radius: var(--radius);
+  text-align: center;
+  transition: var(--transition);
+}
+
+.infoCard:hover {
+  background: rgba(26, 26, 26, 0.8);
+  border-color: rgba(212, 175, 55, 0.4);
+  transform: translateY(-5px);
+}
+
+.iconWrapper {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background: rgba(212, 175, 55, 0.1);
+  color: var(--gold-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.5rem;
+  transition: var(--transition);
+}
+
+.infoCard:hover .iconWrapper {
+  background: var(--gold-primary);
+  color: #000;
+}
+
+.infoCard h3 {
+  color: var(--gold-light);
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.infoCard p {
+  color: #a0a0a0;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.contactLink {
+  color: var(--gold-primary);
+  font-weight: 600;
+  font-size: 1.1rem;
+  position: relative;
+  transition: var(--transition);
+}
+
+.contactLink::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 1px;
+  bottom: -2px;
+  left: 0;
+  background-color: var(--gold-primary);
+  transition: width 0.3s ease;
+}
+
+.contactLink:hover::after {
+  width: 100%;
+}
