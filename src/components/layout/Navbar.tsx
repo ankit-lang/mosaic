@@ -18,21 +18,24 @@ export default function Navbar() {
   }, []);
 
   return (
-    <nav className={`${styles.navbar} ${scrolled ? styles.scrolled : ''}`}>
+    <nav className={`${styles.navbar} ${scrolled ? styles.scrolled : ''}  `} style={{
+      padding: "0",
+    }}>
       <div className={styles.container}>
         <Link href="/" className={styles.logo}>
-          MOSAIC
+          <img src="/logo.png" alt="logo" className='w-[170px] h-[100px]' />
         </Link>
-        
+
         <div className={styles.desktopMenu}>
-          <Link href="#home" className={styles.navLink}>Home</Link>
-          <Link href="#menu" className={styles.navLink}>Menu</Link>
-          <Link href="#about" className={styles.navLink}>About</Link>
-          <Link href="#contact" className={styles.navLink}>Contact</Link>
+          <Link href="/" className={styles.navLink}>Home</Link>
+          <Link href="/menu" className={styles.navLink}>Menu</Link>
+          <Link href="/about" className={styles.navLink}>About</Link>
+          <Link href="/reservations" className={styles.navLink}>Reservations</Link>
+          <Link href="/contact" className={styles.navLink}>Contact</Link>
         </div>
 
-        <button 
-          className={styles.mobileToggle} 
+        <button
+          className={styles.mobileToggle}
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
         >
           {mobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
@@ -41,10 +44,11 @@ export default function Navbar() {
 
       {mobileMenuOpen && (
         <div className={styles.mobileMenu}>
-          <Link href="#home" className={styles.mobileLink} onClick={() => setMobileMenuOpen(false)}>Home</Link>
-          <Link href="#menu" className={styles.mobileLink} onClick={() => setMobileMenuOpen(false)}>Menu</Link>
-          <Link href="#about" className={styles.mobileLink} onClick={() => setMobileMenuOpen(false)}>About</Link>
-          <Link href="#contact" className={styles.mobileLink} onClick={() => setMobileMenuOpen(false)}>Contact</Link>
+          <Link href="/" className={styles.mobileLink} onClick={() => setMobileMenuOpen(false)}>Home</Link>
+          <Link href="/menu" className={styles.mobileLink} onClick={() => setMobileMenuOpen(false)}>Menu</Link>
+          <Link href="/about" className={styles.mobileLink} onClick={() => setMobileMenuOpen(false)}>About</Link>
+          <Link href="/reservations" className={styles.mobileLink} onClick={() => setMobileMenuOpen(false)}>Reservations</Link>
+          <Link href="/contact" className={styles.mobileLink} onClick={() => setMobileMenuOpen(false)}>Contact</Link>
         </div>
       )}
     </nav>
