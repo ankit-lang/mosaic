@@ -1,9 +1,6 @@
 "use server";
 
-import { PrismaClient } from "@prisma/client";
 import { revalidatePath } from "next/cache";
-
-const prisma = new PrismaClient();
 
 export async function createReservation(formData: FormData) {
   const name = formData.get("name") as string;
@@ -17,26 +14,8 @@ export async function createReservation(formData: FormData) {
     return { error: "All fields are required" };
   }
 
-  // Combine date and time
-  const date = new Date(`${dateStr}T${timeStr}`);
-
-  try {
-    await prisma.reservation.create({
-      data: {
-        name,
-        email,
-        phone,
-        date,
-        partySize: parseInt(partySizeStr),
-      },
-    });
-    
-    // In a real app we'd trigger an email here
-    return { success: true };
-  } catch (error) {
-    console.error("Error creating reservation:", error);
-    return { error: "Failed to create reservation" };
-  }
+  // MOCK: Always return success for now
+  return { success: true };
 }
 
 export async function submitContact(formData: FormData) {
@@ -48,18 +27,26 @@ export async function submitContact(formData: FormData) {
     return { error: "All fields are required" };
   }
 
-  try {
-    await prisma.contactMessage.create({
-      data: {
-        name,
-        email,
-        message,
-      },
-    });
-    
-    return { success: true };
-  } catch (error) {
-    console.error("Error submitting message:", error);
-    return { error: "Failed to send message" };
+  // MOCK: Always return success for now
+  return { success: true };
+}
+
+export async function getUsers() {
+  // MOCK: Return empty array or dummy users
+  return [
+    { id: 1, name: "Admin", email: "admin@mosaic.com", createdAt: new Date() }
+  ];
+}
+
+export async function createUser(formData: FormData) {
+  const name = formData.get("name") as string;
+  const email = formData.get("email") as string;
+
+  if (!name || !email) {
+    return { error: "Name and email are required" };
   }
+  
+  // MOCK: Pretend it succeeded
+  revalidatePath("/admin/settings");
+  return { success: true };
 }
