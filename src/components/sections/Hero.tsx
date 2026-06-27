@@ -1,38 +1,92 @@
 "use client";
 
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import styles from './Hero.module.css';
-import MagicRings from '@/components/react-bits/MagicRings';
 import ShinyText from '@/components/react-bits/ShinyText';
 
+const images = [
+  '/banner/1.png',
+  '/banner/2.png',
+  '/banner/3.png',
+  '/banner/4.png',
+  '/banner/5.png',
+  '/banner/6.png',
+];
+
 export default function Hero() {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % images.length);
+    }, 5000);
+    return () => clearInterval(timer);
+  }, []);
+
+  // Generate floating anti-gravity particles (droplets)
+  const particles = Array.from({ length: 30 }).map((_, i) => ({
+    id: i,
+    size: Math.random() * 8 + 4, // 4px to 12px
+    x: Math.random() * 100, // 0 to 100%
+    delay: Math.random() * 5,
+    duration: Math.random() * 15 + 10, // 10 to 25 seconds to float up
+  }));
+
   return (
     <section id="home" className={styles.hero}>
-      {/* MagicRings background container */}
-      <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', zIndex: 0 }}>
-        <MagicRings
-          color="#d4af37"      // Gold color
-          colorTwo="#ffffff"   // White color
-          ringCount={8}
-          speed={0.5}
-          attenuation={15}
-          lineThickness={3}
-          baseRadius={0.4}
-          radiusStep={0.12}
-          opacity={0.8}
-          blur={0}
-          noiseAmount={0.05}
-          rotation={0}
-          ringGap={1.2}
-          fadeIn={0.7}
-          fadeOut={0.5}
-          followMouse={true}
-          mouseInfluence={0.1}
-          hoverScale={1.1}
-          parallax={0.02}
-          clickBurst={true}
-        />
+      {/* Cinematic Ken Burns Image Sequence */}
+      <div className={styles.imageSequenceContainer}>
+        <AnimatePresence mode="popLayout">
+          <motion.div
+            key={currentIndex}
+            initial={{ opacity: 0, scale: 1 }}
+            animate={{ opacity: 1, scale: 1.15 }} // Slow scale up
+            exit={{ opacity: 0 }}
+            transition={{
+              opacity: { duration: 1.5, ease: "easeInOut" },
+              scale: { duration: 10, ease: "linear" }, // Slow motion pan
+            }}
+            className={styles.imageWrapper}
+          >
+            <Image
+              src={images[currentIndex]}
+              alt="MOSAIC Premium Dining"
+              fill
+              priority={currentIndex === 0}
+              className={styles.bgImage}
+            />
+          </motion.div>
+        </AnimatePresence>
+      </div>
+
+      {/* Anti-Gravity Droplets Overlay */}
+      <div className={styles.particlesContainer}>
+        {particles.map((p) => (
+          <motion.div
+            key={p.id}
+            className={styles.particle}
+            style={{
+              width: p.size,
+              height: p.size,
+              left: `${p.x}%`,
+            }}
+            initial={{ y: '100vh', opacity: 0 }}
+            animate={{ 
+              y: '-10vh', 
+              opacity: [0, 0.8, 0.8, 0],
+              x: p.x % 2 === 0 ? '20px' : '-20px' // gentle sway
+            }}
+            transition={{
+              duration: p.duration,
+              delay: p.delay,
+              repeat: Infinity,
+              ease: "linear",
+            }}
+          />
+        ))}
       </div>
 
       <div className={styles.overlay}></div>
@@ -54,7 +108,7 @@ export default function Hero() {
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 0.8 }}
         >
-          Experience premium dining in the heart of Lusaka. A symphony of flavors crafted just for you.
+          A surreal dining experience where culinary art defies gravity.
         </motion.p>
         
         <motion.div
