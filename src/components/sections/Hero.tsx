@@ -6,6 +6,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import styles from './Hero.module.css';
 import ShinyText from '@/components/react-bits/ShinyText';
+import { UtensilsCrossed, CalendarDays } from 'lucide-react';
 
 const images = [
   '/banner/1.png',
@@ -29,10 +30,10 @@ export default function Hero() {
   // Generate floating anti-gravity particles (droplets)
   const particles = Array.from({ length: 30 }).map((_, i) => ({
     id: i,
-    size: Math.random() * 8 + 4, // 4px to 12px
-    x: Math.random() * 100, // 0 to 100%
+    size: Math.random() * 8 + 4,
+    x: Math.random() * 100,
     delay: Math.random() * 5,
-    duration: Math.random() * 15 + 10, // 10 to 25 seconds to float up
+    duration: Math.random() * 15 + 10,
   }));
 
   return (
@@ -43,11 +44,11 @@ export default function Hero() {
           <motion.div
             key={currentIndex}
             initial={{ opacity: 0, scale: 1 }}
-            animate={{ opacity: 1, scale: 1.15 }} // Slow scale up
+            animate={{ opacity: 1, scale: 1.15 }}
             exit={{ opacity: 0 }}
             transition={{
               opacity: { duration: 1.5, ease: "easeInOut" },
-              scale: { duration: 10, ease: "linear" }, // Slow motion pan
+              scale: { duration: 10, ease: "linear" },
             }}
             className={styles.imageWrapper}
           >
@@ -77,7 +78,7 @@ export default function Hero() {
             animate={{ 
               y: '-10vh', 
               opacity: [0, 0.8, 0.8, 0],
-              x: p.x % 2 === 0 ? '20px' : '-20px' // gentle sway
+              x: p.x % 2 === 0 ? '20px' : '-20px'
             }}
             transition={{
               duration: p.duration,
@@ -96,10 +97,13 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.2 }}
         >
+          <span className="text-xs uppercase tracking-[0.4em] text-gold font-bold mb-3 inline-block">
+            Arabian Charcoal & Indo-Chinese Fine Dining
+          </span>
           <h1 className={styles.title}>
             <ShinyText text="MOSAIC" disabled={false} speed={3} className="" />
           </h1>
-          <h2 className={styles.subtitle}>Restaurant & Cafe</h2>
+          <h2 className={styles.subtitle}>Restaurant & Cafe • Lusaka</h2>
         </motion.div>
         
         <motion.p 
@@ -108,7 +112,7 @@ export default function Hero() {
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 0.8 }}
         >
-          A surreal dining experience where culinary art defies gravity.
+          Experience 30 Category Collections featuring rich Tandoori Charcoal Kebabs, Authentic Chinese Soups, Indo-Chinese Wok Specialties, Dum Biryanis & Artisanal Cafe Drinks.
         </motion.p>
         
         <motion.div
@@ -117,11 +121,13 @@ export default function Hero() {
           transition={{ duration: 0.8, delay: 1.2 }}
           className={styles.buttonGroup}
         >
-          <Link href="#menu" className="btn-primary">
-            Explore Menu
+          <Link href="/menu" className="btn-primary">
+            <UtensilsCrossed size={16} />
+            <span>Explore Full Menu</span>
           </Link>
-          <Link href="#contact" className="btn-outline">
-            Visit Us
+          <Link href="/reservations" className="btn-outline">
+            <CalendarDays size={16} />
+            <span>Book a Table</span>
           </Link>
         </motion.div>
       </div>

@@ -93,7 +93,7 @@ export default function ReservationsPage() {
               <button
                 type="submit"
                 disabled={status === "loading"}
-                className="mt-6 w-full py-4 bg-gold hover:bg-gold-dark text-black font-bold uppercase tracking-[0.2em] rounded-xl transition-colors disabled:opacity-50 overflow-hidden relative group"
+                className="mt-6 w-full btn-primary py-4 disabled:opacity-50"
               >
                 {status === "loading" ? "Processing..." : (
                   <ShinyText text="Confirm Booking" disabled={false} speed={2} className="text-black font-bold" color="#000000" shineColor="#ffffff" />
