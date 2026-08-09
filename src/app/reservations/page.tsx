@@ -112,7 +112,7 @@ export default function ReservationsPage() {
               <p className="text-neutral-400 font-sans font-light mb-6">
                 Looking to host an exclusive event? We offer two private rooms accommodating up to 24 guests, featuring custom menus and dedicated service.
               </p>
-              <a href="mailto:events@mosaic.com" className="inline-block text-gold text-sm uppercase tracking-widest font-bold border-b border-gold pb-1 hover:text-white hover:border-white transition-colors">
+              <a href="mailto:mosaic2503@gmail.com" className="inline-block text-gold text-sm uppercase tracking-widest font-bold border-b border-gold pb-1 hover:text-white hover:border-white transition-colors">
                 Enquire Now
               </a>
             </div>

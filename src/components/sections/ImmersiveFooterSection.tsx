@@ -25,13 +25,13 @@ export default function ImmersiveFooterSection() {
       
       <div className="relative z-20 text-center px-4 max-w-3xl mx-auto flex flex-col items-center">
         <span className="text-xs uppercase tracking-[0.4em] text-gold font-bold mb-4">
-          Unforgettable Culinary Journeys
+          YOUR TABLE AWAITS
         </span>
-        <h2 className="text-4xl md:text-6xl font-serif font-bold text-white mb-6">
-          Elevate Your Evening
+        <h2 className="text-3xl md:text-5xl font-serif font-bold text-white mb-6 leading-tight">
+          Make Your Next Meal Extraordinary
         </h2>
-        <p className="text-neutral-300 font-sans text-base sm:text-lg mb-10 max-w-xl leading-relaxed">
-          Reserve your VIP table today or explore our 30 Category Collections featuring Arabian charcoal kebabs, Chinese soups & wok specialties.
+        <p className="text-neutral-300 font-sans text-base sm:text-lg mb-10 max-w-2xl leading-relaxed">
+          Discover the flavours of MOSAIC and experience a dining destination where every plate tells a story. Reserve your table today and let us create an unforgettable culinary journey for you.
         </p>
         
         <div className="flex flex-wrap items-center justify-center gap-5">
@@ -48,7 +48,7 @@ export default function ImmersiveFooterSection() {
           </Link>
           <Link href="/menu" className="btn-outline">
             <UtensilsCrossed size={16} />
-            <span>BROWSE FULL MENU</span>
+            <span>EXPLORE FULL MENU</span>
           </Link>
         </div>
       </div>

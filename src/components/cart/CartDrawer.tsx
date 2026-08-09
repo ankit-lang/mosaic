@@ -102,7 +102,7 @@ export default function CartDrawer() {
                 <motion.div
                   initial={{ scale: 0 }}
                   animate={{ scale: 1 }}
-                  type="spring"
+                  transition={{ type: "spring" }}
                   className="w-20 h-20 bg-gold/20 text-gold rounded-full flex items-center justify-center mb-6 border border-gold/40"
                 >
                   <CheckCircle2 size={48} />

@@ -74,8 +74,8 @@ export default function TestimonialSection() {
           <h2 className="text-4xl md:text-5xl font-serif text-white font-bold mb-4">
             What Our Guests Say
           </h2>
-          <p className="text-neutral-400 font-sans text-sm max-w-lg mx-auto">
-            Read authentic reviews from renowned food critics and valued diners who experienced MOSAIC.
+          <p className="text-neutral-400 font-sans text-sm max-w-xl mx-auto">
+            Loved by our guests for exceptional flavours, warm hospitality, and an unforgettable dining experience.
           </p>
           <div className="w-16 h-[2px] bg-gold mx-auto mt-4" />
         </div>

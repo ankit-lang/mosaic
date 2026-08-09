@@ -17,6 +17,14 @@ const images = [
   '/banner/6.png',
 ];
 
+const PARTICLES = Array.from({ length: 15 }).map((_, i) => ({
+  id: i,
+  size: ((i * 7) % 6) + 4,
+  x: ((i * 13) % 95) + 2,
+  delay: (i * 0.6) % 4,
+  duration: ((i * 1.5) % 8) + 10,
+}));
+
 export default function Hero() {
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -26,15 +34,6 @@ export default function Hero() {
     }, 5000);
     return () => clearInterval(timer);
   }, []);
-
-  // Generate floating anti-gravity particles (droplets)
-  const particles = Array.from({ length: 30 }).map((_, i) => ({
-    id: i,
-    size: Math.random() * 8 + 4,
-    x: Math.random() * 100,
-    delay: Math.random() * 5,
-    duration: Math.random() * 15 + 10,
-  }));
 
   return (
     <section id="home" className={styles.hero}>
@@ -65,7 +64,7 @@ export default function Hero() {
 
       {/* Anti-Gravity Droplets Overlay */}
       <div className={styles.particlesContainer}>
-        {particles.map((p) => (
+        {PARTICLES.map((p) => (
           <motion.div
             key={p.id}
             className={styles.particle}
@@ -97,13 +96,13 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.2 }}
         >
-          <span className="text-xs uppercase tracking-[0.4em] text-gold font-bold mb-3 inline-block">
-            Arabian Charcoal & Indo-Chinese Fine Dining
+          <span className="text-xs uppercase tracking-[0.3em] sm:tracking-[0.4em] text-gold font-bold mb-3 inline-block">
+            Arabian Charcoal • Tandoori • Indo-Chinese • Biryani • Artisanal Café
           </span>
           <h1 className={styles.title}>
             <ShinyText text="MOSAIC" disabled={false} speed={3} className="" />
           </h1>
-          <h2 className={styles.subtitle}>Restaurant & Cafe • Lusaka</h2>
+          <h2 className={styles.subtitle}>Where Every Bite Becomes a Memory</h2>
         </motion.div>
         
         <motion.p 
@@ -112,7 +111,7 @@ export default function Hero() {
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 0.8 }}
         >
-          Experience 30 Category Collections featuring rich Tandoori Charcoal Kebabs, Authentic Chinese Soups, Indo-Chinese Wok Specialties, Dum Biryanis & Artisanal Cafe Drinks.
+          Welcome to MOSAIC Restaurant & Cafe, where bold flavours, premium ingredients, and unforgettable dining come together. From smoky Arabian charcoal kebabs and authentic tandoori specialties to flavourful Indo-Chinese creations, royal dum biryanis, and handcrafted café beverages — every dish is prepared to give you a truly memorable experience.
         </motion.p>
         
         <motion.div
@@ -123,11 +122,11 @@ export default function Hero() {
         >
           <Link href="/menu" className="btn-primary">
             <UtensilsCrossed size={16} />
-            <span>Explore Full Menu</span>
+            <span>Explore Our Menu</span>
           </Link>
           <Link href="/reservations" className="btn-outline">
             <CalendarDays size={16} />
-            <span>Book a Table</span>
+            <span>Book Your Table</span>
           </Link>
         </motion.div>
       </div>

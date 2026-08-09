@@ -30,7 +30,7 @@ export default function InfoSection() {
   return (
     <section id="contact" className={`section ${styles.infoSection}`}>
       <div className="container">
-        <h2 className="section-title">Visit Us</h2>
+        <h2 className="section-title">Visit MOSAIC</h2>
         
         <div style={{ marginTop: '3rem' }}>
           <MagicBento 

@@ -58,7 +58,16 @@ export default function ContactPage() {
                 </div>
                 <div>
                   <h3 className="font-sans font-bold text-white mb-2 tracking-wide uppercase text-sm"><ShinyText text="Hours" disabled={false} speed={3} className="" color="#ffffff" shineColor="#d4af37" /></h3>
-                  <p className="font-light text-neutral-400">Monday - Sunday<br />11:00 AM - 10:00 PM</p>
+                  <p className="font-light text-neutral-400">Monday – Thursday: 10:00 AM – 11:00 PM<br />Friday – Sunday: 10:00 AM – 11:30 PM</p>
+                </div>
+              </div>
+              <div className="flex items-start gap-4">
+                <div className="w-12 h-12 rounded-full bg-gold/10 flex items-center justify-center shrink-0 border border-gold/20">
+                  <span className="text-gold font-serif">📞</span>
+                </div>
+                <div>
+                  <h3 className="font-sans font-bold text-white mb-2 tracking-wide uppercase text-sm"><ShinyText text="Reservations & Email" disabled={false} speed={3} className="" color="#ffffff" shineColor="#d4af37" /></h3>
+                  <p className="font-light text-neutral-400">Phone: +260 771036277<br />Email: mosaic2503@gmail.com</p>
                 </div>
               </div>
             </div>

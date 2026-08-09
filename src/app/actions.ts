@@ -43,10 +43,9 @@ export async function createUser(formData: FormData) {
   const email = formData.get("email") as string;
 
   if (!name || !email) {
-    return { error: "Name and email are required" };
+    return;
   }
   
   // MOCK: Pretend it succeeded
   revalidatePath("/admin/settings");
-  return { success: true };
 }

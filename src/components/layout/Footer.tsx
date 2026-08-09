@@ -81,7 +81,7 @@ export default function Footer() {
                 <img src="/logo.png" alt="MOSAIC" className="w-[180px] h-auto object-contain" />
               </Link>
               <p className="text-neutral-400 text-xs sm:text-sm leading-relaxed mb-6 font-sans">
-                A luxury dining experience celebrating Arabian charcoal grills, authentic Chinese soups, Indo-Chinese wok specialties, and artisanal cafe brews.
+                A celebration of flavour bringing together Arabian Charcoal, Tandoori, Indo-Chinese, Royal Biryani & Artisanal Café under one roof. Taste the difference. Feel the warmth. Create the memory.
               </p>
             </div>
 
@@ -110,7 +110,7 @@ export default function Footer() {
                 </svg>
               </a>
               <a
-                href="https://wa.me/260971234567"
+                href="https://wa.me/260771036277"
                 target="_blank"
                 rel="noreferrer"
                 className="w-10 h-10 rounded-full bg-neutral-900 border border-neutral-800 flex items-center justify-center text-neutral-400 hover:text-emerald-400 hover:border-emerald-500 transition-all"
@@ -215,15 +215,15 @@ export default function Footer() {
 
               <div className="flex items-center gap-3 text-neutral-300">
                 <Phone size={16} className="text-gold shrink-0" />
-                <a href="tel:+260971234567" className="hover:text-gold transition-colors">
-                  +260 971 234 567
+                <a href="tel:+260771036277" className="hover:text-gold transition-colors">
+                  +260 771036277
                 </a>
               </div>
 
               <div className="flex items-center gap-3 text-neutral-300">
                 <Mail size={16} className="text-gold shrink-0" />
-                <a href="mailto:info@mosaic.com" className="hover:text-gold transition-colors">
-                  info@mosaic.com
+                <a href="mailto:mosaic2503@gmail.com" className="hover:text-gold transition-colors">
+                  mosaic2503@gmail.com
                 </a>
               </div>
 
