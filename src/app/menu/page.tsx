@@ -2,7 +2,7 @@
 
 import PageWrapper from "@/components/layout/PageWrapper";
 import MenuSection from "@/components/sections/MenuSection";
-import PageBanner from "@/components/layout/PageBanner";
+import MenuHeroBanner from "@/components/layout/MenuHeroBanner";
 import MagicBento from "@/components/react-bits/MagicBento";
 import { Sparkles, Clock, Flame, Utensils } from "lucide-react";
 import Link from "next/link";
@@ -31,13 +31,9 @@ export default function MenuPage() {
 
   return (
     <PageWrapper>
-      <PageBanner 
-        title="Exquisite Dining & Cafe Menu"
-        subtitle="30 Category Collections • 150+ Masterpiece Dishes & Beverages"
-        description="From charcoal-grilled Tandoori delicacies & slow-marinated mutton to rich Indo-Chinese wok creations, artisanal coffees, boba, frappes & mocktails."
-      />
+      <MenuHeroBanner />
 
-      <div className="pb-24 px-4 bg-[#050505] min-h-screen">
+      <div className="pb-32 px-4 bg-[#050505]">
         {/* Chef's Signature Spotlight */}
         <div className="max-w-7xl mx-auto pt-16 mb-20">
           <div className="text-center mb-10">

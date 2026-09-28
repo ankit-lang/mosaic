@@ -15,7 +15,10 @@ interface PageBannerProps {
 
 export default function PageBanner({ title, subtitle, description }: PageBannerProps) {
   return (
-    <section className={styles.hero} style={{ height: '60vh', minHeight: '500px' }}>
+    <section
+      className={styles.hero}
+      style={{ height: 'auto', minHeight: '520px' }}
+    >
       {/* MagicRings background container */}
       <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', zIndex: 0 }}>
         <MagicRings
@@ -44,10 +47,11 @@ export default function PageBanner({ title, subtitle, description }: PageBannerP
 
       <div className={styles.overlay}></div>
       <div className={`${styles.content} w-full`}>
-        <div className="text-center max-w-4xl mx-auto w-full pt-16">
+        {/* pt-28 = 112px — clears the fixed navbar (80px) with breathing room */}
+        <div className="text-center max-w-4xl mx-auto w-full pt-28 pb-14">
           <SplitText
             text={title}
-            className="text-5xl md:text-7xl font-serif text-gold mb-6 tracking-wide text-center"
+            className="text-4xl md:text-6xl font-serif text-gold mb-4 tracking-wide text-center"
             delay={50}
             duration={0.8}
             textAlign="center"
@@ -55,7 +59,7 @@ export default function PageBanner({ title, subtitle, description }: PageBannerP
           
           {subtitle && (
             <motion.h2 
-              className="font-sans font-light text-lg md:text-2xl text-white uppercase tracking-[0.2em] mb-8"
+              className="font-sans font-light text-base md:text-lg text-white uppercase tracking-[0.2em] mb-6"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.5 }}
@@ -70,8 +74,8 @@ export default function PageBanner({ title, subtitle, description }: PageBannerP
               enableBlur={true}
               baseRotation={2}
               blurStrength={10}
-              containerClassName="max-w-3xl mx-auto text-center flex flex-col items-center justify-center mt-6"
-              textClassName="text-neutral-300 text-lg md:text-xl leading-relaxed font-sans font-light tracking-wide text-center mx-auto"
+              containerClassName="max-w-2xl mx-auto text-center flex flex-col items-center justify-center mt-4"
+              textClassName="text-zinc-400 text-base md:text-lg leading-relaxed font-sans font-light tracking-wide text-center mx-auto"
             >
               {description}
             </ScrollReveal>

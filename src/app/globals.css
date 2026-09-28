@@ -73,6 +73,16 @@ a {
   background: var(--gold-secondary);
 }
 
+.scrollbar-none {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-none::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+
 /* Base Utility Classes */
 .container {
   width: 100%;
