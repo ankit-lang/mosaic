@@ -6,6 +6,7 @@ import { menuData, MenuItem } from '@/data/menu';
 import { Search, Sparkles, Clock, Plus, UtensilsCrossed, Minus, Flame, ChevronLeft, ChevronRight } from 'lucide-react';
 import { useCart } from '@/context/CartContext';
 import VariantModal from '@/components/cart/VariantModal';
+import MenuPoster from '@/components/sections/MenuPoster';
 
 // Food image pool — cycles through banner images for visual richness
 const FOOD_IMAGES = [
@@ -262,7 +263,17 @@ export default function MenuSection() {
                 </button>
               </div>
             ) : (
-              filteredCategories.map((cat) => (
+              filteredCategories.map((cat) => cat.images?.length ? (
+                <MenuPoster
+                  key={cat.id}
+                  category={cat}
+                  items={cat.items}
+                  cartItems={items}
+                  onAdd={handleAddItem}
+                  updateQuantity={updateQuantity}
+                  removeItem={removeItem}
+                />
+              ) : (
                 <div key={cat.id} className="space-y-6">
                   <div className="flex items-center gap-3 border-b border-amber-500/20 pb-3">
                     <span className="text-2xl">{cat.icon}</span>
@@ -302,6 +313,16 @@ export default function MenuSection() {
               transition={{ duration: 0.3 }}
               className="space-y-8"
             >
+              {activeCatObj.images?.length ? (
+                <MenuPoster
+                  category={activeCatObj}
+                  items={activeCatObj.items}
+                  cartItems={items}
+                  onAdd={handleAddItem}
+                  updateQuantity={updateQuantity}
+                  removeItem={removeItem}
+                />
+              ) : (<>
               {/* Category Header */}
               <div className="flex flex-col md:flex-row md:items-end justify-between border-b border-amber-500/20 pb-4 gap-4">
                 <div className="flex items-center gap-3.5">
@@ -335,6 +356,7 @@ export default function MenuSection() {
                   />
                 ))}
               </div>
+              </>)}
             </motion.div>
           </AnimatePresence>
         )}

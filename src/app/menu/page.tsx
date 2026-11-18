@@ -12,7 +12,7 @@ export default function MenuPage() {
     {
       title: "Raan Kabab (Mutton)",
       description: "800–900gm whole leg slow-marinated in royal Arabian spices and roasted in tandoor. | Prep Time: Approx. 2 Hours",
-      label: "Royal Signature • ZK 290",
+      label: "Royal Signature • ZK 400",
       color: "#120F17"
     },
     {

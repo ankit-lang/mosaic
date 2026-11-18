@@ -23,59 +23,28 @@ export interface MenuCategory {
   title: string;
   subtitle?: string;
   icon?: string;
+  /** Photos shown under the list in the PDF-style poster layout (beverage pages). */
+  images?: string[];
+  /** Poster style: "fire" = food menu (grill background), default = gold beverage menu. */
+  theme?: 'fire';
+  /** Suffix stripped from item names in the poster layout, e.g. " Fresh Juice" → "Orange". */
+  nameSuffix?: string;
   items: MenuItem[];
 }
 
 export const menuData: MenuCategory[] = [
-  // --- FOOD CATEGORIES ---
+  // --- FOOD CATEGORIES (from the printed food menu) ---
   {
     id: "chinese-soups",
     title: "Chinese Soups",
     subtitle: "Category Collection",
     icon: "🥣",
+    theme: "fire",
+    images: ["/menu/food/soups-1.webp", "/menu/food/soups-2.webp", "/menu/food/soups-3.webp"],
     items: [
       {
-        id: "cs-1",
-        number: 1,
-        name: "Chicken Bowl Soup",
-        category: "Chinese Soups",
-        price: "230",
-        basePrice: 230,
-        description: "A comforting bowl of rich flavors prepared with fresh ingredients and aromatic seasoning.",
-        isSignature: true,
-        isVeg: false
-      },
-      {
-        id: "cs-2",
-        number: 2,
-        name: "Tom Yum Soup",
-        category: "Chinese Soups",
-        price: "120/140",
-        basePrice: 120,
-        variants: [
-          { label: "Chicken", price: 120 },
-          { label: "Prawn", price: 140 }
-        ],
-        description: "Succulent prawn/chicken tossed with aromatic spices and vibrant Asian sauces.",
-        isVeg: false
-      },
-      {
-        id: "cs-3",
-        number: 3,
-        name: "Manchow Soup",
-        category: "Chinese Soups",
-        price: "80/90",
-        basePrice: 80,
-        variants: [
-          { label: "Veg", price: 80 },
-          { label: "Chicken", price: 90 }
-        ],
-        description: "Warm, flavorful, and perfectly balanced to start your meal on a delicious note.",
-        isVeg: false
-      },
-      {
         id: "cs-4",
-        number: 4,
+        number: 1,
         name: "Sweet Corn Soup",
         category: "Chinese Soups",
         price: "80/90",
@@ -89,7 +58,7 @@ export const menuData: MenuCategory[] = [
       },
       {
         id: "cs-5",
-        number: 5,
+        number: 2,
         name: "Hot & Sour Soup",
         category: "Chinese Soups",
         price: "120/140",
@@ -99,6 +68,45 @@ export const menuData: MenuCategory[] = [
           { label: "Chicken", price: 140 }
         ],
         description: "A spicy and tangy delight crafted to awaken your taste buds.",
+        isVeg: false
+      },
+      {
+        id: "cs-1",
+        number: 3,
+        name: "Chicken Bowl Soup",
+        category: "Chinese Soups",
+        price: "230",
+        basePrice: 230,
+        description: "A comforting bowl of rich flavors prepared with fresh ingredients and aromatic seasoning.",
+        isSignature: true,
+        isVeg: false
+      },
+      {
+        id: "cs-2",
+        number: 4,
+        name: "Tom Yum Soup",
+        category: "Chinese Soups",
+        price: "120/140",
+        basePrice: 120,
+        variants: [
+          { label: "Chicken", price: 120 },
+          { label: "Prawn", price: 140 }
+        ],
+        description: "Succulent prawn/chicken tossed with aromatic spices and vibrant Asian sauces.",
+        isVeg: false
+      },
+      {
+        id: "cs-3",
+        number: 5,
+        name: "Manchow Soup",
+        category: "Chinese Soups",
+        price: "80/90",
+        basePrice: 80,
+        variants: [
+          { label: "Veg", price: 80 },
+          { label: "Chicken", price: 90 }
+        ],
+        description: "Warm, flavorful, and perfectly balanced to start your meal on a delicious note.",
         isVeg: false
       },
       {
@@ -132,277 +140,57 @@ export const menuData: MenuCategory[] = [
     ]
   },
   {
-    id: "tandoori-non-veg",
-    title: "Tandoori Non-Veg",
+    id: "indo-chinese-starters-non-veg",
+    title: "Non-Veg Starters",
     subtitle: "Category Collection",
     icon: "🍗",
-    items: [
-      {
-        id: "tnv-1",
-        number: 1,
-        name: "Alfaam Chicken",
-        category: "Tandoori Non-Veg",
-        price: "355/200/100",
-        basePrice: 100,
-        variants: [
-          { label: "Full", price: 355 },
-          { label: "Half", price: 200 },
-          { label: "Quarter", price: 100 }
-        ],
-        description: "Authentic charcoal-grilled chicken infused with bold Arabian spices.",
-        isVeg: false
-      },
-      {
-        id: "tnv-2",
-        number: 2,
-        name: "Afghani Chicken",
-        category: "Tandoori Non-Veg",
-        price: "385/200",
-        basePrice: 200,
-        variants: [
-          { label: "Full", price: 385 },
-          { label: "Half", price: 200 }
-        ],
-        description: "Creamy, mildly spiced chicken marinated for a rich and juicy taste.",
-        isVeg: false
-      },
-      {
-        id: "tnv-3",
-        number: 3,
-        name: "Malai Kabab",
-        category: "Tandoori Non-Veg",
-        price: "220",
-        basePrice: 220,
-        portionNote: "6 pcs",
-        description: "Creamy chicken bites prepared with cheese, cream, and delicate spices.",
-        isVeg: false
-      },
-      {
-        id: "tnv-4",
-        number: 4,
-        name: "Tandoori Baby Chicken",
-        category: "Tandoori Non-Veg",
-        price: "310/170",
-        basePrice: 170,
-        variants: [
-          { label: "Full", price: 310 },
-          { label: "Half", price: 170 }
-        ],
-        description: "Young tender chicken roasted in tandoor for smoky perfection.",
-        isVeg: false
-      },
-      {
-        id: "tnv-5",
-        number: 5,
-        name: "Boti Kabab",
-        category: "Tandoori Non-Veg",
-        price: "240",
-        basePrice: 240,
-        portionNote: "6 pcs",
-        description: "Juicy boneless chicken chunks marinated in traditional Indian spices.",
-        isVeg: false
-      },
-      {
-        id: "tnv-6",
-        number: 6,
-        name: "Chicken Seekh Kabab",
-        category: "Tandoori Non-Veg",
-        price: "240",
-        basePrice: 240,
-        description: "Flavor-packed minced chicken skewers grilled with aromatic herbs.",
-        isVeg: false
-      },
-      {
-        id: "tnv-7",
-        number: 7,
-        name: "Chicken Tikka (Boneless)",
-        category: "Tandoori Non-Veg",
-        price: "220",
-        basePrice: 220,
-        portionNote: "6 pcs",
-        description: "Tender boneless chicken cubes marinated and flame-grilled to perfection.",
-        isVeg: false
-      },
-      {
-        id: "tnv-8",
-        number: 8,
-        name: "BBQ (Chicken)",
-        category: "Tandoori Non-Veg",
-        price: "240",
-        basePrice: 240,
-        description: "Smoky grilled chicken glazed with rich barbecue flavors.",
-        isVeg: false
-      },
-      {
-        id: "tnv-9",
-        number: 9,
-        name: "Kalmi Kabab",
-        category: "Tandoori Non-Veg",
-        price: "240",
-        basePrice: 240,
-        portionNote: "4 pcs",
-        description: "Succulent chicken drumsticks marinated overnight and roasted perfectly.",
-        isVeg: false
-      },
-      {
-        id: "tnv-10",
-        number: 10,
-        name: "Irani Fish",
-        category: "Tandoori Non-Veg",
-        price: "370",
-        basePrice: 370,
-        description: "Persian-style fish preparation with delicate spices and rich flavors.",
-        isVeg: false
-      },
-      {
-        id: "tnv-11",
-        number: 11,
-        name: "Fish Tikka",
-        category: "Tandoori Non-Veg",
-        price: "380",
-        basePrice: 380,
-        portionNote: "4 pcs",
-        description: "Fresh fish pieces marinated with spices and grilled to perfection.",
-        isVeg: false
-      },
-      {
-        id: "tnv-12",
-        number: 12,
-        name: "Prawn Tandoori",
-        category: "Tandoori Non-Veg",
-        price: "380",
-        basePrice: 380,
-        description: "Juicy prawns infused with spices and cooked in authentic tandoori style.",
-        isVeg: false
-      },
-      {
-        id: "tnv-13",
-        number: 13,
-        name: "Adraki Panje (Mutton)",
-        category: "Tandoori Non-Veg",
-        price: "290",
-        basePrice: 290,
-        portionNote: "6 pcs",
-        description: "Tender mutton chops flavored with fresh ginger and robust spices.",
-        isVeg: false
-      },
-      {
-        id: "tnv-14",
-        number: 14,
-        name: "Raan Kabab",
-        category: "Tandoori Non-Veg",
-        price: "290",
-        basePrice: 290,
-        portionNote: "800–900 gm",
-        prepTime: "Approx. 2 Hours",
-        description: "Whole leg delicacy slow-marinated for a rich and royal experience.",
-        isSignature: true,
-        isVeg: false
-      }
-    ]
-  },
-  {
-    id: "tandoori-veg",
-    title: "Tandoori Veg",
-    subtitle: "Category Collection",
-    icon: "🍢",
-    items: [
-      {
-        id: "tv-1",
-        number: 1,
-        name: "Paneer Tikka",
-        category: "Tandoori Veg",
-        price: "290",
-        basePrice: 290,
-        portionNote: "6 pcs",
-        description: "Soft paneer delicately prepared with aromatic herbs and signature sauces.",
-        isVeg: true
-      },
-      {
-        id: "tv-2",
-        number: 2,
-        name: "Tandoori Aloo",
-        category: "Tandoori Veg",
-        price: "190",
-        basePrice: 190,
-        portionNote: "8 pcs",
-        description: "Smoky and flavorful tandoori preparation cooked to juicy perfection.",
-        isVeg: true
-      },
-      {
-        id: "tv-3",
-        number: 3,
-        name: "Veg Seekh Kabab",
-        category: "Tandoori Veg",
-        price: "190",
-        basePrice: 190,
-        portionNote: "8 pcs",
-        description: "Clay-oven grilled specialty marinated in traditional Indian spices.",
-        isVeg: true
-      },
-      {
-        id: "tv-4",
-        number: 4,
-        name: "Hara Bhara Kabab",
-        category: "Tandoori Veg",
-        price: "200",
-        basePrice: 200,
-        portionNote: "6 pcs",
-        description: "Crispy green kebabs packed with veggies and fresh herbs.",
-        isVeg: true
-      }
-    ]
-  },
-  {
-    id: "indo-chinese-starters-non-veg",
-    title: "Indo-Chinese Starters – Non Veg",
-    subtitle: "Category Collection",
-    icon: "🔥",
+    theme: "fire",
+    images: ["/menu/food/nv-starters-1.webp", "/menu/food/nv-starters-2.webp", "/menu/food/nv-starters-3.webp"],
     items: [
       {
         id: "ics-nv-1",
         number: 1,
         name: "Chicken Spring Roll",
-        category: "Indo-Chinese Starters – Non Veg",
+        category: "Non-Veg Starters",
         price: "160",
         basePrice: 160,
-        portionNote: "6 pcs",
         description: "Carefully prepared to deliver authentic flavors and a memorable dining experience.",
+        portionNote: "6 pcs",
         isVeg: false
       },
       {
         id: "ics-nv-2",
         number: 2,
         name: "Chicken Lollipop",
-        category: "Indo-Chinese Starters – Non Veg",
+        category: "Non-Veg Starters",
         price: "165",
         basePrice: 165,
-        portionNote: "8 pcs",
         description: "Crispy chicken wings tossed with bold Indo-Chinese flavors.",
+        portionNote: "8 pcs",
         isVeg: false
       },
       {
         id: "ics-nv-3",
         number: 3,
         name: "Chicken Dumpling",
-        category: "Indo-Chinese Starters – Non Veg",
+        category: "Non-Veg Starters",
         price: "155",
         basePrice: 155,
-        portionNote: "8 pcs",
         description: "A delicious house favorite combining rich aromas with bold taste.",
+        portionNote: "8 pcs",
         isVeg: false
       },
       {
         id: "ics-nv-4",
         number: 4,
-        name: "Dragon Special",
-        category: "Indo-Chinese Starters – Non Veg",
+        name: "Dragon Chicken / Prawn / Fish",
+        category: "Non-Veg Starters",
         price: "230",
         basePrice: 230,
         variants: [
-          { label: "Dragon Chicken", price: 230 },
-          { label: "Dragon Prawn", price: 230 },
-          { label: "Dragon Fish", price: 230 }
+          { label: "Chicken", price: 230 },
+          { label: "Prawn", price: 230 },
+          { label: "Fish", price: 230 }
         ],
         description: "Tender seafood preparation infused with herbs, spices, and bold flavors.",
         isVeg: false
@@ -411,7 +199,7 @@ export const menuData: MenuCategory[] = [
         id: "ics-nv-5",
         number: 5,
         name: "Chilli Chicken",
-        category: "Indo-Chinese Starters – Non Veg",
+        category: "Non-Veg Starters",
         price: "170",
         basePrice: 170,
         description: "Crispy chicken tossed with onions, peppers, and bold Indo-Chinese chilli flavors.",
@@ -421,17 +209,17 @@ export const menuData: MenuCategory[] = [
         id: "ics-nv-6",
         number: 6,
         name: "Chicken 65",
-        category: "Indo-Chinese Starters – Non Veg",
+        category: "Non-Veg Starters",
         price: "145",
         basePrice: 145,
-        description: "Carefully prepared to deliver authentic flavors and a memorable dining experience.",
+        description: "Crispy chicken bites tossed in spicy, aromatic masala.",
         isVeg: false
       },
       {
         id: "ics-nv-7",
         number: 7,
         name: "Prawn 65",
-        category: "Indo-Chinese Starters – Non Veg",
+        category: "Non-Veg Starters",
         price: "230",
         basePrice: 230,
         description: "Succulent prawns tossed with aromatic spices and vibrant Asian sauces.",
@@ -441,17 +229,27 @@ export const menuData: MenuCategory[] = [
         id: "ics-nv-8",
         number: 8,
         name: "Lemon Chicken",
-        category: "Indo-Chinese Starters – Non Veg",
+        category: "Non-Veg Starters",
         price: "160",
         basePrice: 160,
         description: "A chef-crafted specialty prepared with fresh ingredients and signature flavors.",
         isVeg: false
       },
       {
-        id: "ics-nv-9",
+        id: "ics-nv-13",
         number: 9,
+        name: "Karkarai Chicken",
+        category: "Non-Veg Starters",
+        price: "170",
+        basePrice: 170,
+        description: "Crispy chicken tossed in a spicy, aromatic masala with a burst of flavour.",
+        isVeg: false
+      },
+      {
+        id: "ics-nv-9",
+        number: 10,
         name: "Honey Crispy Chicken",
-        category: "Indo-Chinese Starters – Non Veg",
+        category: "Non-Veg Starters",
         price: "150",
         basePrice: 150,
         description: "A delicious house favorite combining rich aromas with bold taste.",
@@ -459,9 +257,9 @@ export const menuData: MenuCategory[] = [
       },
       {
         id: "ics-nv-10",
-        number: 10,
+        number: 11,
         name: "Drum Up Heaven Chicken",
-        category: "Indo-Chinese Starters – Non Veg",
+        category: "Non-Veg Starters",
         price: "160",
         basePrice: 160,
         description: "Signature chicken dish loaded with rich flavors and spices.",
@@ -470,9 +268,9 @@ export const menuData: MenuCategory[] = [
       },
       {
         id: "ics-nv-11",
-        number: 11,
-        name: "Dynamic Cocktail Prawn",
-        category: "Indo-Chinese Starters – Non Veg",
+        number: 12,
+        name: "Dynamic Prawn",
+        category: "Non-Veg Starters",
         price: "230",
         basePrice: 230,
         description: "Succulent prawns tossed with aromatic spices and vibrant Asian sauces.",
@@ -480,39 +278,41 @@ export const menuData: MenuCategory[] = [
       },
       {
         id: "ics-nv-12",
-        number: 12,
+        number: 13,
         name: "Prawn Tempura",
-        category: "Indo-Chinese Starters – Non Veg",
+        category: "Non-Veg Starters",
         price: "220",
         basePrice: 220,
-        portionNote: "Japanese spices",
         description: "Lightly battered prawns fried for a crispy Japanese-style taste.",
+        portionNote: "Japanese spices",
         isVeg: false
       }
     ]
   },
   {
     id: "indo-chinese-starters-veg",
-    title: "Indo-Chinese Starters – Veg",
+    title: "Veg Starters",
     subtitle: "Category Collection",
-    icon: "🥬",
+    icon: "🥟",
+    theme: "fire",
+    images: ["/menu/food/veg-starters-1.webp", "/menu/food/veg-starters-2.webp", "/menu/food/veg-starters-3.webp"],
     items: [
       {
         id: "ics-v-1",
         number: 1,
         name: "Corn Pepper Salt",
-        category: "Indo-Chinese Starters – Veg",
+        category: "Veg Starters",
         price: "140",
         basePrice: 140,
-        portionNote: "170gm corn",
         description: "A chef-crafted specialty prepared with fresh ingredients and signature flavors.",
+        portionNote: "170gm corn",
         isVeg: true
       },
       {
         id: "ics-v-2",
         number: 2,
         name: "Veg Manchurian (Dry)",
-        category: "Indo-Chinese Starters – Veg",
+        category: "Veg Starters",
         price: "150",
         basePrice: 150,
         description: "Vegetable balls coated in flavorful Indo-Chinese spices.",
@@ -522,7 +322,7 @@ export const menuData: MenuCategory[] = [
         id: "ics-v-3",
         number: 3,
         name: "Crispy Chilli Potato",
-        category: "Indo-Chinese Starters – Veg",
+        category: "Veg Starters",
         price: "120",
         basePrice: 120,
         description: "Crispy potato fingers tossed with spicy and tangy sauces.",
@@ -532,7 +332,7 @@ export const menuData: MenuCategory[] = [
         id: "ics-v-4",
         number: 4,
         name: "Mushroom Cheese Chilli",
-        category: "Indo-Chinese Starters – Veg",
+        category: "Veg Starters",
         price: "260",
         basePrice: 260,
         description: "Cheesy mushrooms cooked with spices and colorful peppers.",
@@ -542,7 +342,7 @@ export const menuData: MenuCategory[] = [
         id: "ics-v-5",
         number: 5,
         name: "Chilli Paneer",
-        category: "Indo-Chinese Starters – Veg",
+        category: "Veg Starters",
         price: "240",
         basePrice: 240,
         description: "Paneer cubes tossed in spicy sauces with crunchy vegetables.",
@@ -552,7 +352,7 @@ export const menuData: MenuCategory[] = [
         id: "ics-v-6",
         number: 6,
         name: "Paneer 65",
-        category: "Indo-Chinese Starters – Veg",
+        category: "Veg Starters",
         price: "170",
         basePrice: 170,
         description: "Crispy paneer bites coated with bold South-style flavors.",
@@ -562,7 +362,7 @@ export const menuData: MenuCategory[] = [
         id: "ics-v-7",
         number: 7,
         name: "Chinese Bhel",
-        category: "Indo-Chinese Starters – Veg",
+        category: "Veg Starters",
         price: "180",
         basePrice: 180,
         description: "A crunchy mix of noodles, veggies, and tangy sauces.",
@@ -572,37 +372,316 @@ export const menuData: MenuCategory[] = [
         id: "ics-v-8",
         number: 8,
         name: "Veg. Dumpling",
-        category: "Indo-Chinese Starters – Veg",
+        category: "Veg Starters",
         price: "110",
         basePrice: 110,
-        portionNote: "8 pcs",
         description: "Soft dumplings stuffed with seasoned vegetables and herbs.",
+        portionNote: "8 pcs",
         isVeg: true
       },
       {
         id: "ics-v-9",
         number: 9,
         name: "Veg. Spring Roll",
-        category: "Indo-Chinese Starters – Veg",
+        category: "Veg Starters",
         price: "100",
         basePrice: 100,
-        portionNote: "6 pcs",
         description: "Crispy rolls filled with fresh vegetables and savory flavors.",
+        portionNote: "6 pcs",
+        isVeg: true
+      }
+    ]
+  },
+  {
+    id: "tandoori-non-veg",
+    title: "Tandoori Non-Veg",
+    subtitle: "Category Collection",
+    icon: "🔥",
+    theme: "fire",
+    images: ["/menu/food/tandoori-nv-1.webp", "/menu/food/tandoori-nv-2.webp"],
+    items: [
+      {
+        id: "tnv-4",
+        number: 1,
+        name: "Tandoori Baby Chicken",
+        category: "Tandoori Non-Veg",
+        price: "170/310",
+        basePrice: 170,
+        variants: [
+          { label: "Half", price: 170 },
+          { label: "Full", price: 310 }
+        ],
+        description: "Young tender chicken roasted in tandoor for smoky perfection.",
+        isVeg: false
+      },
+      {
+        id: "tnv-5",
+        number: 2,
+        name: "Boti Kabab",
+        category: "Tandoori Non-Veg",
+        price: "240",
+        basePrice: 240,
+        description: "Juicy boneless chicken chunks marinated in traditional Indian spices.",
+        portionNote: "6 pcs",
+        isVeg: false
+      },
+      {
+        id: "tnv-7",
+        number: 3,
+        name: "Chicken Tikka (Boneless)",
+        category: "Tandoori Non-Veg",
+        price: "220",
+        basePrice: 220,
+        description: "Tender boneless chicken cubes marinated and flame-grilled to perfection.",
+        portionNote: "6 pcs",
+        isVeg: false
+      },
+      {
+        id: "tnv-3",
+        number: 4,
+        name: "Malai Kabab",
+        category: "Tandoori Non-Veg",
+        price: "220",
+        basePrice: 220,
+        description: "Creamy chicken bites prepared with cheese, cream, and delicate spices.",
+        portionNote: "6 pcs",
+        isVeg: false
+      },
+      {
+        id: "tnv-6",
+        number: 5,
+        name: "Chicken Seekh Kabab",
+        category: "Tandoori Non-Veg",
+        price: "240",
+        basePrice: 240,
+        description: "Flavor-packed minced chicken skewers grilled with aromatic herbs.",
+        isVeg: false
+      },
+      {
+        id: "tnv-12",
+        number: 6,
+        name: "Prawn Tandoori",
+        category: "Tandoori Non-Veg",
+        price: "380",
+        basePrice: 380,
+        description: "Juicy prawns infused with spices and cooked in authentic tandoori style.",
+        isVeg: false
+      },
+      {
+        id: "tnv-13",
+        number: 7,
+        name: "Adraki Panje (Mutton)",
+        category: "Tandoori Non-Veg",
+        price: "290",
+        basePrice: 290,
+        description: "Tender mutton chops flavored with fresh ginger and robust spices.",
+        portionNote: "6 pcs",
+        isVeg: false
+      },
+      {
+        id: "tnv-15",
+        number: 8,
+        name: "Hyderabadi Chicken (Fry)",
+        category: "Tandoori Non-Veg",
+        price: "220",
+        basePrice: 220,
+        description: "Tender chicken pieces marinated in aromatic Hyderabadi spices, deep-fried to golden perfection for a crispy, flavourful bite.",
+        isVeg: false
+      },
+      {
+        id: "tnv-1",
+        number: 9,
+        name: "Alfaam Chicken",
+        category: "Tandoori Non-Veg",
+        price: "100/200/355",
+        basePrice: 100,
+        variants: [
+          { label: "Quarter", price: 100 },
+          { label: "Half", price: 200 },
+          { label: "Full", price: 355 }
+        ],
+        description: "Authentic charcoal-grilled chicken infused with bold Arabian spices.",
+        isVeg: false
+      },
+      {
+        id: "tnv-2",
+        number: 10,
+        name: "Afghani Chicken",
+        category: "Tandoori Non-Veg",
+        price: "200/355",
+        basePrice: 200,
+        variants: [
+          { label: "Half", price: 200 },
+          { label: "Full", price: 355 }
+        ],
+        description: "Creamy, mildly spiced chicken marinated for a rich and juicy taste.",
+        isVeg: false
+      },
+      {
+        id: "tnv-9",
+        number: 11,
+        name: "Kalmi Kabab",
+        category: "Tandoori Non-Veg",
+        price: "240",
+        basePrice: 240,
+        description: "Succulent chicken drumsticks marinated overnight and roasted perfectly.",
+        portionNote: "4 pcs",
+        isVeg: false
+      },
+      {
+        id: "tnv-10",
+        number: 12,
+        name: "Irani Fish",
+        category: "Tandoori Non-Veg",
+        price: "370",
+        basePrice: 370,
+        description: "Persian-style fish preparation with delicate spices and rich flavors.",
+        isVeg: false
+      },
+      {
+        id: "tnv-11",
+        number: 13,
+        name: "Fish Tikka",
+        category: "Tandoori Non-Veg",
+        price: "380",
+        basePrice: 380,
+        description: "Fresh fish pieces marinated with spices and grilled to perfection.",
+        portionNote: "4 pcs",
+        isVeg: false
+      },
+      {
+        id: "tnv-16",
+        number: 14,
+        name: "Mosaic Special Kabab",
+        category: "Tandoori Non-Veg",
+        price: "320",
+        basePrice: 320,
+        description: "Juicy chicken kebab blended with melted cheese, egg and aromatic herbs, seasoned to perfection and grilled until golden.",
+        isSignature: true,
+        isVeg: false
+      },
+      {
+        id: "tnv-17",
+        number: 15,
+        name: "Hyderabadi Chicken Fry (Mosaic Special)",
+        category: "Tandoori Non-Veg",
+        price: "290",
+        basePrice: 290,
+        description: "Tender chicken pieces marinated in aromatic Hyderabadi spices, deep-fried to golden perfection for a crispy, flavourful bite.",
+        isSignature: true,
+        isVeg: false
+      },
+      {
+        id: "tnv-18",
+        number: 16,
+        name: "Non-Veg Platter",
+        category: "Tandoori Non-Veg",
+        price: "600",
+        basePrice: 600,
+        description: "Chicken Malai Kabab, Chicken Tikka, Chicken Seekh Kabab and Mutton Barra.",
+        isVeg: false
+      },
+      {
+        id: "tnv-19",
+        number: 17,
+        name: "Non-Veg Platter with Prawn",
+        category: "Tandoori Non-Veg",
+        price: "700",
+        basePrice: 700,
+        description: "Chicken Malai Kabab, Chicken Tikka, Chicken Seekh Kabab, Mutton Barra and Tandoori Prawn.",
+        isVeg: false
+      }
+    ]
+  },
+  {
+    id: "tandoori-veg",
+    title: "Tandoori Veg",
+    subtitle: "Category Collection",
+    icon: "🧀",
+    theme: "fire",
+    images: ["/menu/food/tandoori-veg.webp"],
+    items: [
+      {
+        id: "tv-1",
+        number: 1,
+        name: "Paneer Tikka",
+        category: "Tandoori Veg",
+        price: "290",
+        basePrice: 290,
+        description: "Soft paneer delicately prepared with aromatic herbs and signature sauces.",
+        portionNote: "6 pcs",
+        isVeg: true
+      },
+      {
+        id: "tv-2",
+        number: 2,
+        name: "Tandoori Alu",
+        category: "Tandoori Veg",
+        price: "190",
+        basePrice: 190,
+        description: "Smoky and flavorful tandoori preparation cooked to juicy perfection.",
+        portionNote: "8 pcs",
+        isVeg: true
+      },
+      {
+        id: "tv-3",
+        number: 3,
+        name: "Veg Seekh Kabab",
+        category: "Tandoori Veg",
+        price: "190",
+        basePrice: 190,
+        description: "Clay-oven grilled specialty marinated in traditional Indian spices.",
+        portionNote: "8 pcs",
+        isVeg: true
+      },
+      {
+        id: "tv-4",
+        number: 4,
+        name: "Hara Bhara Kabab",
+        category: "Tandoori Veg",
+        price: "200",
+        basePrice: 200,
+        description: "Crispy green kebabs packed with veggies and fresh herbs.",
+        portionNote: "6 pcs",
+        isVeg: true
+      },
+      {
+        id: "tv-5",
+        number: 5,
+        name: "Veg Cheese Ball",
+        category: "Tandoori Veg",
+        price: "210",
+        basePrice: 210,
+        description: "Crispy golden cheese balls filled with delicious melted cheese and herbs.",
+        portionNote: "6 pcs",
+        isVeg: true
+      },
+      {
+        id: "tv-6",
+        number: 6,
+        name: "Paneer Multani (Mosaic Special)",
+        category: "Tandoori Veg",
+        price: "300",
+        basePrice: 300,
+        description: "Creamy paneer cubes marinated in aromatic Multani spices and grilled to perfection.",
+        isSignature: true,
         isVeg: true
       }
     ]
   },
   {
     id: "veg-indo-chinese-main-course",
-    title: "Veg. Indo-Chinese Main Course",
+    title: "Veg Indo-Chinese Main Course",
     subtitle: "Category Collection",
-    icon: "🍱",
+    icon: "🥢",
+    theme: "fire",
+    images: ["/menu/food/veg-ic-main.webp"],
     items: [
       {
         id: "vic-m-1",
         number: 1,
         name: "Hot Garlic Paneer",
-        category: "Veg. Indo-Chinese Main Course",
+        category: "Veg Indo-Chinese Main Course",
         price: "260",
         basePrice: 260,
         description: "A flavorful garlic-infused dish with a spicy kick and rich Asian aromas.",
@@ -612,7 +691,7 @@ export const menuData: MenuCategory[] = [
         id: "vic-m-2",
         number: 2,
         name: "Chilli Garlic Paneer",
-        category: "Veg. Indo-Chinese Main Course",
+        category: "Veg Indo-Chinese Main Course",
         price: "210",
         basePrice: 210,
         description: "Soft paneer delicately prepared with aromatic herbs and signature sauces.",
@@ -622,7 +701,7 @@ export const menuData: MenuCategory[] = [
         id: "vic-m-3",
         number: 3,
         name: "Black Pepper Paneer",
-        category: "Veg. Indo-Chinese Main Course",
+        category: "Veg Indo-Chinese Main Course",
         price: "190",
         basePrice: 190,
         description: "Fresh paneer tossed with crushed black pepper and spices for a bold and smoky taste.",
@@ -632,7 +711,7 @@ export const menuData: MenuCategory[] = [
         id: "vic-m-4",
         number: 4,
         name: "Stir Fry Mixed Veg.",
-        category: "Veg. Indo-Chinese Main Course",
+        category: "Veg Indo-Chinese Main Course",
         price: "120",
         basePrice: 120,
         description: "Fresh vegetables stir-fried with sauces and seasonings for a colorful and flavorful dish.",
@@ -642,7 +721,7 @@ export const menuData: MenuCategory[] = [
         id: "vic-m-5",
         number: 5,
         name: "Chilli Black Bean Mixed Veg.",
-        category: "Veg. Indo-Chinese Main Course",
+        category: "Veg Indo-Chinese Main Course",
         price: "120",
         basePrice: 120,
         description: "Mixed vegetables cooked in black bean sauce with spicy flavors and Asian seasonings.",
@@ -652,21 +731,23 @@ export const menuData: MenuCategory[] = [
   },
   {
     id: "non-veg-indo-chinese-main-course",
-    title: "Non-Veg. Indo-Chinese Main Course",
+    title: "Non-Veg Indo-Chinese Main Course",
     subtitle: "Category Collection",
-    icon: "🥘",
+    icon: "🥡",
+    theme: "fire",
+    images: ["/menu/food/nv-ic-main.webp"],
     items: [
       {
         id: "nvic-m-1",
         number: 1,
-        name: "Devil Special (Hot)",
-        category: "Non-Veg. Indo-Chinese Main Course",
+        name: "Devil Chicken / Prawn / Fish (Hot)",
+        category: "Non-Veg Indo-Chinese Main Course",
         price: "210/260",
         basePrice: 210,
         variants: [
-          { label: "Devil Chicken", price: 210 },
-          { label: "Devil Prawn", price: 260 },
-          { label: "Devil Fish", price: 260 }
+          { label: "Chicken", price: 210 },
+          { label: "Prawn", price: 260 },
+          { label: "Fish", price: 260 }
         ],
         description: "Spicy Indo-Chinese preparation loaded with hot sauces and bold flavors for spice lovers.",
         isVeg: false
@@ -674,14 +755,14 @@ export const menuData: MenuCategory[] = [
       {
         id: "nvic-m-2",
         number: 2,
-        name: "Chilli Special Main Course",
-        category: "Non-Veg. Indo-Chinese Main Course",
+        name: "Chilli Chicken / Prawn / Fish",
+        category: "Non-Veg Indo-Chinese Main Course",
         price: "210/260",
         basePrice: 210,
         variants: [
-          { label: "Chilli Chicken", price: 210 },
-          { label: "Chilli Prawn", price: 260 },
-          { label: "Chilli Fish", price: 260 }
+          { label: "Chicken", price: 210 },
+          { label: "Prawn", price: 260 },
+          { label: "Fish", price: 260 }
         ],
         description: "Wok-tossed with onions, capsicum, and signature sauces for a perfect spicy bite.",
         isVeg: false
@@ -689,14 +770,14 @@ export const menuData: MenuCategory[] = [
       {
         id: "nvic-m-3",
         number: 3,
-        name: "Hot Garlic Special",
-        category: "Non-Veg. Indo-Chinese Main Course",
+        name: "Hot Garlic Chicken / Prawn / Fish",
+        category: "Non-Veg Indo-Chinese Main Course",
         price: "210/260",
         basePrice: 210,
         variants: [
-          { label: "Hot Garlic Chicken", price: 210 },
-          { label: "Hot Garlic Prawn", price: 260 },
-          { label: "Hot Garlic Fish", price: 260 }
+          { label: "Chicken", price: 210 },
+          { label: "Prawn", price: 260 },
+          { label: "Fish", price: 260 }
         ],
         description: "Garlic-infused preparation with rich Asian sauces and a delicious spicy finish.",
         isVeg: false
@@ -704,14 +785,14 @@ export const menuData: MenuCategory[] = [
       {
         id: "nvic-m-4",
         number: 4,
-        name: "Black Bean Chilli Special",
-        category: "Non-Veg. Indo-Chinese Main Course",
+        name: "Black Bean Chilli Chicken / Prawn / Fish",
+        category: "Non-Veg Indo-Chinese Main Course",
         price: "260/300",
         basePrice: 260,
         variants: [
-          { label: "Black Bean Chicken", price: 260 },
-          { label: "Black Bean Prawn", price: 300 },
-          { label: "Black Bean Fish", price: 300 }
+          { label: "Chicken", price: 260 },
+          { label: "Prawn", price: 300 },
+          { label: "Fish", price: 300 }
         ],
         description: "Cooked with black bean sauce, bell peppers, and bold spices for rich flavor.",
         isVeg: false
@@ -720,7 +801,7 @@ export const menuData: MenuCategory[] = [
         id: "nvic-m-5",
         number: 5,
         name: "Mustard Fish",
-        category: "Non-Veg. Indo-Chinese Main Course",
+        category: "Non-Veg Indo-Chinese Main Course",
         price: "250",
         basePrice: 250,
         description: "Fresh fish cooked with mustard flavors and aromatic spices for a unique taste.",
@@ -733,6 +814,8 @@ export const menuData: MenuCategory[] = [
     title: "Chicken Main Course",
     subtitle: "Category Collection",
     icon: "🍛",
+    theme: "fire",
+    images: ["/menu/food/chicken-main.webp"],
     items: [
       {
         id: "cmc-1",
@@ -749,8 +832,8 @@ export const menuData: MenuCategory[] = [
         number: 2,
         name: "Chicken Lababdar",
         category: "Chicken Main Course",
-        price: "330",
-        basePrice: 330,
+        price: "290",
+        basePrice: 290,
         description: "Rich and flavorful chicken curry prepared in a creamy tomato-based signature gravy.",
         isVeg: false
       },
@@ -771,62 +854,62 @@ export const menuData: MenuCategory[] = [
         category: "Chicken Main Course",
         price: "200",
         basePrice: 200,
-        portionNote: "4 pcs",
         description: "Classic homestyle chicken curry cooked with flavorful Indian spices.",
+        portionNote: "4 pcs",
+        isVeg: false
+      },
+      {
+        id: "cmc-9",
+        number: 5,
+        name: "Lahori Chicken",
+        category: "Chicken Main Course",
+        price: "220",
+        basePrice: 220,
+        description: "Authentic Lahori-style chicken cooked with robust spices and rich flavors.",
+        portionNote: "4 pcs",
         isVeg: false
       },
       {
         id: "cmc-5",
-        number: 5,
+        number: 6,
         name: "Chicken Tawa Masala",
         category: "Chicken Main Course",
-        price: "190",
-        basePrice: 190,
-        portionNote: "4 pcs",
+        price: "240",
+        basePrice: 240,
         description: "Chicken cooked on tawa with rich masala and aromatic seasonings.",
+        portionNote: "6 pcs",
         isVeg: false
       },
       {
         id: "cmc-6",
-        number: 6,
+        number: 7,
         name: "Reshmi Butter Masala",
         category: "Chicken Main Course",
-        price: "300",
-        basePrice: 300,
-        portionNote: "6 pcs",
+        price: "290",
+        basePrice: 290,
         description: "Soft chicken pieces cooked in creamy buttery gravy with rich flavors.",
+        portionNote: "6 pcs",
         isVeg: false
       },
       {
         id: "cmc-7",
-        number: 7,
-        name: "Patyala Chicken",
+        number: 8,
+        name: "Patyala Chicken (Mosaic Special)",
         category: "Chicken Main Course",
         price: "290",
         basePrice: 290,
-        description: "Special house-style chicken curry prepared with rich spices and signature taste.",
+        description: "Tender chicken wrapped in a delicate egg layer, stuffed with fresh spinach and served in a rich, flavourful red gravy.",
         isSignature: true,
         isVeg: false
       },
       {
         id: "cmc-8",
-        number: 8,
+        number: 9,
         name: "Kalmi Chicken Butter Masala",
         category: "Chicken Main Course",
         price: "290",
         basePrice: 290,
         description: "Juicy chicken drumsticks cooked in creamy butter gravy and aromatic spices.",
-        isVeg: false
-      },
-      {
-        id: "cmc-9",
-        number: 9,
-        name: "Lahori Chicken",
-        category: "Chicken Main Course",
-        price: "240",
-        basePrice: 240,
-        portionNote: "4 pcs",
-        description: "Authentic Lahori-style chicken cooked with robust spices and rich flavors.",
         isVeg: false
       },
       {
@@ -845,13 +928,25 @@ export const menuData: MenuCategory[] = [
     id: "mutton",
     title: "Mutton Main Course",
     subtitle: "Category Collection",
-    icon: "🥩",
+    icon: "🍖",
+    theme: "fire",
+    images: ["/menu/food/mutton-main.webp"],
     items: [
       {
-        id: "m-1",
+        id: "m-11",
         number: 1,
+        name: "Keema Egg",
+        category: "Mutton Main Course",
+        price: "290",
+        basePrice: 290,
+        description: "Flavorful minced mutton cooked with eggs and signature seasonings.",
+        isVeg: false
+      },
+      {
+        id: "m-1",
+        number: 2,
         name: "Mutton Rahra",
-        category: "Mutton",
+        category: "Mutton Main Course",
         price: "220",
         basePrice: 220,
         description: "Rich mutton curry cooked with minced meat and aromatic spices.",
@@ -859,9 +954,9 @@ export const menuData: MenuCategory[] = [
       },
       {
         id: "m-2",
-        number: 2,
+        number: 3,
         name: "Mutton Roghan Josh",
-        category: "Mutton",
+        category: "Mutton Main Course",
         price: "220",
         basePrice: 220,
         description: "Traditional Kashmiri-style mutton curry with deep flavors and rich spices.",
@@ -869,9 +964,9 @@ export const menuData: MenuCategory[] = [
       },
       {
         id: "m-3",
-        number: 3,
+        number: 4,
         name: "Mutton Kassa",
-        category: "Mutton",
+        category: "Mutton Main Course",
         price: "200",
         basePrice: 200,
         description: "Slow-cooked spicy mutton preparation packed with bold flavors.",
@@ -879,9 +974,9 @@ export const menuData: MenuCategory[] = [
       },
       {
         id: "m-4",
-        number: 4,
+        number: 5,
         name: "Shahi Korma",
-        category: "Mutton",
+        category: "Mutton Main Course",
         price: "230",
         basePrice: 230,
         description: "Royal-style mutton curry prepared with creamy gravy and aromatic spices.",
@@ -890,41 +985,31 @@ export const menuData: MenuCategory[] = [
       },
       {
         id: "m-5",
-        number: 5,
-        name: "Mutton Rizala",
-        category: "Mutton",
-        price: "190",
-        basePrice: 190,
-        description: "Light and flavorful Mughlai-style mutton curry with rich texture.",
-        isVeg: false
-      },
-      {
-        id: "m-6",
         number: 6,
-        name: "Tawa Fry Liver",
-        category: "Mutton",
-        price: "240",
-        basePrice: 240,
-        description: "Spicy liver preparation cooked on tawa with aromatic masalas.",
+        name: "Mutton Rizala",
+        category: "Mutton Main Course",
+        price: "200",
+        basePrice: 200,
+        description: "Light and flavorful Mughlai-style mutton curry with rich texture.",
         isVeg: false
       },
       {
         id: "m-7",
         number: 7,
         name: "Haryali Mutton",
-        category: "Mutton",
+        category: "Mutton Main Course",
         price: "240",
         basePrice: 240,
-        description: "Mutton cooked with fresh herbs and green spices for unique flavors.",
+        description: "Mutton cooked with fresh herbs and green spices for unique, rich flavors.",
         isVeg: false
       },
       {
         id: "m-8",
         number: 8,
         name: "Mutton Ghee Roast",
-        category: "Mutton",
-        price: "220",
-        basePrice: 220,
+        category: "Mutton Main Course",
+        price: "310",
+        basePrice: 310,
         description: "Spicy roasted mutton tossed in ghee and traditional seasonings.",
         isVeg: false
       },
@@ -932,7 +1017,7 @@ export const menuData: MenuCategory[] = [
         id: "m-9",
         number: 9,
         name: "Keema Matar",
-        category: "Mutton",
+        category: "Mutton Main Course",
         price: "290",
         basePrice: 290,
         description: "Minced mutton cooked with peas and flavorful spices.",
@@ -942,20 +1027,10 @@ export const menuData: MenuCategory[] = [
         id: "m-10",
         number: 10,
         name: "Keema Alu",
-        category: "Mutton",
+        category: "Mutton Main Course",
         price: "290",
         basePrice: 290,
         description: "Rich minced mutton preparation combined with potatoes and spices.",
-        isVeg: false
-      },
-      {
-        id: "m-11",
-        number: 11,
-        name: "Keema Egg",
-        category: "Mutton",
-        price: "290",
-        basePrice: 290,
-        description: "Flavorful minced mutton cooked with eggs and signature seasonings.",
         isVeg: false
       }
     ]
@@ -965,17 +1040,19 @@ export const menuData: MenuCategory[] = [
     title: "Fish / Egg Main Course",
     subtitle: "Category Collection",
     icon: "🐟",
+    theme: "fire",
+    images: ["/menu/food/fish-egg.webp"],
     items: [
       {
         id: "fe-1",
         number: 1,
         name: "Tawa Fish / Prawn",
-        category: "Fish / Egg",
-        price: "220",
-        basePrice: 220,
+        category: "Fish / Egg Main Course",
+        price: "260",
+        basePrice: 260,
         variants: [
-          { label: "Fish", price: 220 },
-          { label: "Prawn", price: 220 }
+          { label: "Fish", price: 260 },
+          { label: "Prawn", price: 260 }
         ],
         description: "Fresh seafood cooked on tawa with spices for smoky and rich flavors.",
         isVeg: false
@@ -984,9 +1061,9 @@ export const menuData: MenuCategory[] = [
         id: "fe-2",
         number: 2,
         name: "Prawn Malai Curry",
-        category: "Fish / Egg",
-        price: "250",
-        basePrice: 250,
+        category: "Fish / Egg Main Course",
+        price: "290",
+        basePrice: 290,
         description: "Creamy prawn curry cooked with mild spices and rich coconut flavors.",
         isVeg: false
       },
@@ -994,9 +1071,9 @@ export const menuData: MenuCategory[] = [
         id: "fe-3",
         number: 3,
         name: "Fish Curry",
-        category: "Fish / Egg",
-        price: "200",
-        basePrice: 200,
+        category: "Fish / Egg Main Course",
+        price: "240",
+        basePrice: 240,
         description: "Fresh fish simmered in flavorful curry with aromatic spices.",
         isVeg: false
       },
@@ -1004,7 +1081,7 @@ export const menuData: MenuCategory[] = [
         id: "fe-4",
         number: 4,
         name: "Egg Bhurji",
-        category: "Fish / Egg",
+        category: "Fish / Egg Main Course",
         price: "190",
         basePrice: 190,
         description: "Scrambled eggs cooked with onions, tomatoes, and Indian spices.",
@@ -1014,7 +1091,7 @@ export const menuData: MenuCategory[] = [
         id: "fe-5",
         number: 5,
         name: "Egg Akbari",
-        category: "Fish / Egg",
+        category: "Fish / Egg Main Course",
         price: "190",
         basePrice: 190,
         description: "Rich egg preparation cooked in signature gravy and aromatic seasonings.",
@@ -1024,15 +1101,17 @@ export const menuData: MenuCategory[] = [
   },
   {
     id: "veg-main-course",
-    title: "Veg. Main Course",
+    title: "Veg Main Course",
     subtitle: "Category Collection",
-    icon: "🍲",
+    icon: "🥘",
+    theme: "fire",
+    images: ["/menu/food/veg-main.webp"],
     items: [
       {
         id: "vmc-1",
         number: 1,
         name: "Mushroom Matar",
-        category: "Veg. Main Course",
+        category: "Veg Main Course",
         price: "220",
         basePrice: 220,
         description: "Fresh mushrooms and peas cooked together in rich flavorful gravy.",
@@ -1042,7 +1121,7 @@ export const menuData: MenuCategory[] = [
         id: "vmc-2",
         number: 2,
         name: "Paneer Butter Masala",
-        category: "Veg. Main Course",
+        category: "Veg Main Course",
         price: "210",
         basePrice: 210,
         description: "Soft paneer cubes cooked in creamy tomato and butter gravy.",
@@ -1052,7 +1131,7 @@ export const menuData: MenuCategory[] = [
         id: "vmc-3",
         number: 3,
         name: "Shahi Paneer",
-        category: "Veg. Main Course",
+        category: "Veg Main Course",
         price: "210",
         basePrice: 210,
         description: "Royal paneer preparation cooked with creamy gravy and aromatic spices.",
@@ -1062,7 +1141,7 @@ export const menuData: MenuCategory[] = [
         id: "vmc-4",
         number: 4,
         name: "Palak Paneer",
-        category: "Veg. Main Course",
+        category: "Veg Main Course",
         price: "220",
         basePrice: 220,
         description: "Paneer cubes cooked in fresh spinach gravy with mild spices.",
@@ -1072,7 +1151,7 @@ export const menuData: MenuCategory[] = [
         id: "vmc-5",
         number: 5,
         name: "Matar Paneer",
-        category: "Veg. Main Course",
+        category: "Veg Main Course",
         price: "210",
         basePrice: 210,
         description: "Classic paneer and peas curry cooked with traditional flavors.",
@@ -1082,7 +1161,7 @@ export const menuData: MenuCategory[] = [
         id: "vmc-6",
         number: 6,
         name: "Paneer Do Pyaza",
-        category: "Veg. Main Course",
+        category: "Veg Main Course",
         price: "210",
         basePrice: 210,
         description: "Paneer cooked with double onions and flavorful spices.",
@@ -1092,7 +1171,7 @@ export const menuData: MenuCategory[] = [
         id: "vmc-7",
         number: 7,
         name: "Paneer Bhurji",
-        category: "Veg. Main Course",
+        category: "Veg Main Course",
         price: "200",
         basePrice: 200,
         description: "Scrambled paneer cooked with spices and fresh vegetables.",
@@ -1102,17 +1181,27 @@ export const menuData: MenuCategory[] = [
         id: "vmc-8",
         number: 8,
         name: "Veg Karahi",
-        category: "Veg. Main Course",
+        category: "Veg Main Course",
         price: "200",
         basePrice: 200,
         description: "Mixed vegetables cooked in karahi-style masala with rich flavors.",
         isVeg: true
       },
       {
-        id: "vmc-9",
+        id: "vmc-14",
         number: 9,
+        name: "Paneer Aamne-Samne",
+        category: "Veg Main Course",
+        price: "200",
+        basePrice: 200,
+        description: "Soft, succulent paneer served with two contrasting rich and flavourful gravies, beautifully presented side by side on one platter.",
+        isVeg: true
+      },
+      {
+        id: "vmc-9",
+        number: 10,
         name: "Veg Jalfrezi",
-        category: "Veg. Main Course",
+        category: "Veg Main Course",
         price: "200",
         basePrice: 200,
         description: "Vegetables tossed with spices and sauces for a spicy preparation.",
@@ -1120,9 +1209,9 @@ export const menuData: MenuCategory[] = [
       },
       {
         id: "vmc-10",
-        number: 10,
+        number: 11,
         name: "Veg Mughlai Handi",
-        category: "Veg. Main Course",
+        category: "Veg Main Course",
         price: "220",
         basePrice: 220,
         description: "Rich Mughlai-style vegetable curry prepared with signature ingredients.",
@@ -1131,9 +1220,9 @@ export const menuData: MenuCategory[] = [
       },
       {
         id: "vmc-11",
-        number: 11,
+        number: 12,
         name: "Dal Yellow Tadka",
-        category: "Veg. Main Course",
+        category: "Veg Main Course",
         price: "160",
         basePrice: 160,
         description: "Simple yellow lentils tempered with aromatic Indian spices.",
@@ -1141,9 +1230,9 @@ export const menuData: MenuCategory[] = [
       },
       {
         id: "vmc-12",
-        number: 12,
+        number: 13,
         name: "Dal Makhani",
-        category: "Veg. Main Course",
+        category: "Veg Main Course",
         price: "160",
         basePrice: 160,
         description: "Slow-cooked black lentils in creamy gravy with buttery flavors.",
@@ -1151,12 +1240,22 @@ export const menuData: MenuCategory[] = [
       },
       {
         id: "vmc-13",
-        number: 13,
+        number: 14,
         name: "Panchmel Dal",
-        category: "Veg. Main Course",
+        category: "Veg Main Course",
         price: "160",
         basePrice: 160,
         description: "Five lentils blended together for rich taste and nutrition.",
+        isVeg: true
+      },
+      {
+        id: "vmc-15",
+        number: 15,
+        name: "Cashew Nut Masala",
+        category: "Veg Main Course",
+        price: "220",
+        basePrice: 220,
+        description: "Crunchy cashew nuts cooked in a rich, creamy tomato-based gravy with aromatic Indian spices.",
         isVeg: true
       }
     ]
@@ -1166,6 +1265,8 @@ export const menuData: MenuCategory[] = [
     title: "Noodles",
     subtitle: "Category Collection",
     icon: "🍜",
+    theme: "fire",
+    images: ["/menu/food/noodles.webp"],
     items: [
       {
         id: "n-1",
@@ -1237,6 +1338,26 @@ export const menuData: MenuCategory[] = [
         basePrice: 200,
         description: "Crispy noodles topped with tangy sauce and loaded with vegetables and proteins.",
         isVeg: false
+      },
+      {
+        id: "n-8",
+        number: 8,
+        name: "Chicken Schezwan Noodles",
+        category: "Noodles",
+        price: "240",
+        basePrice: 240,
+        description: "Spicy noodles tossed with tender chicken, fresh veggies, and flavourful Schezwan sauce.",
+        isVeg: false
+      },
+      {
+        id: "n-9",
+        number: 9,
+        name: "Veg. Schezwan Noodles",
+        category: "Noodles",
+        price: "190",
+        basePrice: 190,
+        description: "Stir-fried noodles tossed with fresh vegetables and spicy Schezwan sauce.",
+        isVeg: true
       }
     ]
   },
@@ -1245,6 +1366,8 @@ export const menuData: MenuCategory[] = [
     title: "Fried Rice",
     subtitle: "Category Collection",
     icon: "🍚",
+    theme: "fire",
+    images: ["/menu/food/fried-rice.webp"],
     items: [
       {
         id: "fr-1",
@@ -1274,6 +1397,7 @@ export const menuData: MenuCategory[] = [
         price: "200",
         basePrice: 200,
         description: "A delicious combination of rice, vegetables, and proteins tossed together.",
+        portionNote: "With Chicken, Prawn & Veg",
         isVeg: false
       },
       {
@@ -1333,7 +1457,9 @@ export const menuData: MenuCategory[] = [
     id: "rice",
     title: "Rice",
     subtitle: "Category Collection",
-    icon: "🌾",
+    icon: "🍚",
+    theme: "fire",
+    images: ["/menu/food/rice.webp"],
     items: [
       {
         id: "r-1",
@@ -1376,24 +1502,24 @@ export const menuData: MenuCategory[] = [
         isVeg: true
       },
       {
-        id: "r-5",
-        number: 5,
-        name: "Keema Polao",
-        category: "Rice",
-        price: "200",
-        basePrice: 200,
-        description: "Fragrant rice cooked with minced meat and traditional spices.",
-        isVeg: false
-      },
-      {
         id: "r-6",
-        number: 6,
+        number: 5,
         name: "Navratan Polao",
         category: "Rice",
         price: "200",
         basePrice: 200,
         description: "A rich pulao loaded with vegetables, dry fruits, and aromatic spices.",
         isVeg: true
+      },
+      {
+        id: "r-5",
+        number: 6,
+        name: "Keema Polao",
+        category: "Rice",
+        price: "200",
+        basePrice: 200,
+        description: "Fragrant rice cooked with minced meat and traditional spices.",
+        isVeg: false
       }
     ]
   },
@@ -1401,7 +1527,9 @@ export const menuData: MenuCategory[] = [
     id: "biryani-special",
     title: "Biryani Special",
     subtitle: "Category Collection",
-    icon: "🏺",
+    icon: "🍲",
+    theme: "fire",
+    images: ["/menu/food/biryani.webp"],
     items: [
       {
         id: "bs-1",
@@ -1438,8 +1566,8 @@ export const menuData: MenuCategory[] = [
         number: 4,
         name: "Fish Biryani",
         category: "Biryani Special",
-        price: "200",
-        basePrice: 200,
+        price: "220",
+        basePrice: 220,
         description: "Flavorful seafood biryani cooked with spices and fragrant rice.",
         isVeg: false
       }
@@ -1450,6 +1578,8 @@ export const menuData: MenuCategory[] = [
     title: "Bread • Naan • Roti",
     subtitle: "Category Collection",
     icon: "🫓",
+    theme: "fire",
+    images: ["/menu/food/bread.webp"],
     items: [
       {
         id: "bnr-1",
@@ -1492,58 +1622,8 @@ export const menuData: MenuCategory[] = [
         isVeg: true
       },
       {
-        id: "bnr-5",
-        number: 5,
-        name: "Tawa Laccha Paratha (Ghee)",
-        category: "Bread • Naan • Roti",
-        price: "40",
-        basePrice: 40,
-        description: "Multi-layered paratha roasted in ghee for rich taste.",
-        isVeg: true
-      },
-      {
-        id: "bnr-6",
-        number: 6,
-        name: "Plain Naan",
-        category: "Bread • Naan • Roti",
-        price: "25",
-        basePrice: 25,
-        description: "Soft tandoor-baked bread with authentic Indian flavors.",
-        isVeg: true
-      },
-      {
-        id: "bnr-7",
-        number: 7,
-        name: "Butter Naan",
-        category: "Bread • Naan • Roti",
-        price: "30",
-        basePrice: 30,
-        description: "Classic naan brushed generously with melted butter.",
-        isVeg: true
-      },
-      {
-        id: "bnr-8",
-        number: 8,
-        name: "Cheese Butter Naan",
-        category: "Bread • Naan • Roti",
-        price: "90",
-        basePrice: 90,
-        description: "Stuffed naan filled with cheese and finished with butter.",
-        isVeg: true
-      },
-      {
-        id: "bnr-9",
-        number: 9,
-        name: "Keema Butter Naan (Mutton)",
-        category: "Bread • Naan • Roti",
-        price: "75",
-        basePrice: 75,
-        description: "Soft naan stuffed with flavorful minced mutton filling.",
-        isVeg: false
-      },
-      {
         id: "bnr-10",
-        number: 10,
+        number: 5,
         name: "Masala Kulcha",
         category: "Bread • Naan • Roti",
         price: "55",
@@ -1553,7 +1633,7 @@ export const menuData: MenuCategory[] = [
       },
       {
         id: "bnr-11",
-        number: 11,
+        number: 6,
         name: "Garlic Naan",
         category: "Bread • Naan • Roti",
         price: "40",
@@ -1563,13 +1643,63 @@ export const menuData: MenuCategory[] = [
       },
       {
         id: "bnr-12",
-        number: 12,
+        number: 7,
         name: "Chilli Garlic Naan",
         category: "Bread • Naan • Roti",
         price: "45",
         basePrice: 45,
         description: "Spicy naan flavored with garlic and chili seasoning.",
         isVeg: true
+      },
+      {
+        id: "bnr-5",
+        number: 8,
+        name: "Tawa Laccha Paratha (Ghee)",
+        category: "Bread • Naan • Roti",
+        price: "40",
+        basePrice: 40,
+        description: "Multi-layered paratha roasted in ghee for rich taste.",
+        isVeg: true
+      },
+      {
+        id: "bnr-6",
+        number: 9,
+        name: "Plain Naan",
+        category: "Bread • Naan • Roti",
+        price: "25",
+        basePrice: 25,
+        description: "Soft tandoor-baked bread with authentic Indian flavors.",
+        isVeg: true
+      },
+      {
+        id: "bnr-7",
+        number: 10,
+        name: "Butter Naan",
+        category: "Bread • Naan • Roti",
+        price: "30",
+        basePrice: 30,
+        description: "Classic naan brushed generously with melted butter.",
+        isVeg: true
+      },
+      {
+        id: "bnr-8",
+        number: 11,
+        name: "Cheese Butter Naan",
+        category: "Bread • Naan • Roti",
+        price: "90",
+        basePrice: 90,
+        description: "Stuffed naan filled with cheese and finished with butter.",
+        isVeg: true
+      },
+      {
+        id: "bnr-9",
+        number: 12,
+        name: "Keema Butter Naan (Mutton)",
+        category: "Bread • Naan • Roti",
+        price: "75",
+        basePrice: 75,
+        description: "Soft naan stuffed with flavorful minced mutton filling.",
+        isVeg: false
       }
     ]
   },
@@ -1577,7 +1707,9 @@ export const menuData: MenuCategory[] = [
     id: "sweet-dish",
     title: "Sweet Dish",
     subtitle: "Category Collection",
-    icon: "🍨",
+    icon: "🍮",
+    theme: "fire",
+    images: ["/menu/food/sweet-dish.webp"],
     items: [
       {
         id: "sd-1",
@@ -1590,49 +1722,61 @@ export const menuData: MenuCategory[] = [
         isVeg: true
       },
       {
-        id: "sd-2",
+        id: "sd-3",
         number: 2,
-        name: "Sankhya (egg)",
+        name: "Fry Icecream Mosaic Special",
         category: "Sweet Dish",
         price: "100",
         basePrice: 100,
-        description: "Traditional sweet dish prepared with rich ingredients and authentic flavors.",
-        isVeg: false
-      },
-      {
-        id: "sd-3",
-        number: 3,
-        name: "Fry Icecream Mosaic Special",
-        category: "Sweet Dish",
-        price: "150",
-        basePrice: 150,
         description: "Crispy outside with creamy ice cream inside for a unique dessert delight.",
         isSignature: true,
         isVeg: true
       },
       {
         id: "sd-4",
-        number: 4,
+        number: 3,
         name: "Gajar Halwa",
         category: "Sweet Dish",
         price: "120",
         basePrice: 120,
         description: "Classic carrot dessert slow-cooked with milk and dry fruits.",
         isVeg: true
+      },
+      {
+        id: "sd-5",
+        number: 4,
+        name: "Rasmalai",
+        category: "Sweet Dish",
+        price: "110",
+        basePrice: 110,
+        description: "Classic Indian sweet with rich syrupy goodness.",
+        isVeg: true
+      },
+      {
+        id: "sd-6",
+        number: 5,
+        name: "Gulab Jamun",
+        category: "Sweet Dish",
+        price: "125",
+        basePrice: 125,
+        description: "Traditional Indian delicacy with creamy saffron flavors.",
+        isVeg: true
       }
     ]
   },
   {
-    id: "fries",
-    title: "Fries",
+    id: "fries-salads",
+    title: "Fries & Salads",
     subtitle: "Category Collection",
     icon: "🍟",
+    theme: "fire",
+    images: ["/menu/food/fries.webp", "/menu/food/salads.webp"],
     items: [
       {
         id: "f-1",
         number: 1,
         name: "Plain Chips",
-        category: "Fries",
+        category: "Fries & Salads",
         price: "55",
         basePrice: 55,
         description: "Crispy golden fries served fresh for the perfect crunchy bite.",
@@ -1642,7 +1786,7 @@ export const menuData: MenuCategory[] = [
         id: "f-2",
         number: 2,
         name: "Masala Chips",
-        category: "Fries",
+        category: "Fries & Salads",
         price: "65",
         basePrice: 65,
         description: "Seasoned fries tossed with spices for extra flavor and crunch.",
@@ -1652,25 +1796,17 @@ export const menuData: MenuCategory[] = [
         id: "f-3",
         number: 3,
         name: "Masala Papar",
-        category: "Fries",
+        category: "Fries & Salads",
         price: "35",
         basePrice: 35,
         description: "Crispy papad topped with masala and flavorful seasonings.",
         isVeg: true
-      }
-    ]
-  },
-  {
-    id: "salate",
-    title: "Salad & Raita",
-    subtitle: "Category Collection",
-    icon: "🥗",
-    items: [
+      },
       {
         id: "sal-1",
-        number: 1,
+        number: 4,
         name: "Green Salad",
-        category: "Salad & Raita",
+        category: "Fries & Salads",
         price: "50",
         basePrice: 50,
         description: "A refreshing mix of fresh vegetables served as a healthy side.",
@@ -1678,13 +1814,226 @@ export const menuData: MenuCategory[] = [
       },
       {
         id: "sal-2",
-        number: 2,
+        number: 5,
         name: "Mixed Raita",
-        category: "Salad & Raita",
+        category: "Fries & Salads",
         price: "70",
         basePrice: 70,
         description: "Creamy yogurt blended with vegetables and mild seasonings for freshness.",
         isVeg: true
+      }
+    ]
+  },
+  {
+    id: "zambian-meal",
+    title: "Traditional Zambian Meal",
+    subtitle: "Category Collection",
+    icon: "🇿🇲",
+    theme: "fire",
+    images: ["/menu/food/zambian.webp"],
+    items: [
+      {
+        id: "zm-1",
+        number: 1,
+        name: "Nshima with Vegetables",
+        category: "Traditional Zambian Meal",
+        price: "100",
+        basePrice: 100,
+        description: "Fresh seasonal vegetables served with traditional nshima for a wholesome meal.",
+        isVeg: true
+      },
+      {
+        id: "zm-2",
+        number: 2,
+        name: "Nshima with Chicken",
+        category: "Traditional Zambian Meal",
+        price: "120",
+        basePrice: 120,
+        description: "Traditional Zambian nshima served with flavorful chicken and seasonal relish.",
+        isVeg: false
+      },
+      {
+        id: "zm-3",
+        number: 3,
+        name: "Nshima with Lamb",
+        category: "Traditional Zambian Meal",
+        price: "130",
+        basePrice: 130,
+        description: "Soft nshima paired with tender, slow-cooked lamb and rich gravy.",
+        isVeg: false
+      },
+      {
+        id: "zm-4",
+        number: 4,
+        name: "Nshima with Fish or Prawns",
+        category: "Traditional Zambian Meal",
+        price: "140",
+        basePrice: 140,
+        description: "Classic nshima paired with fish or juicy prawns.",
+        isVeg: false
+      }
+    ]
+  },
+  {
+    id: "dosa",
+    title: "Dosa",
+    subtitle: "Category Collection",
+    icon: "🥞",
+    theme: "fire",
+    images: ["/menu/food/dosa.webp"],
+    items: [
+      {
+        id: "ds-1",
+        number: 1,
+        name: "Plain Dosa",
+        category: "Dosa",
+        price: "125",
+        basePrice: 125,
+        description: "Crispy, thin dosa made to perfection and served with delicious chutney and sambar.",
+        isVeg: true
+      },
+      {
+        id: "ds-2",
+        number: 2,
+        name: "Masala Dosa",
+        category: "Dosa",
+        price: "155",
+        basePrice: 155,
+        description: "A perfectly crisp dosa filled with aromatic potato masala and a delicious blend of South Indian spices.",
+        isVeg: true
+      },
+      {
+        id: "ds-3",
+        number: 3,
+        name: "Butter Masala Dosa",
+        category: "Dosa",
+        price: "165",
+        basePrice: 165,
+        description: "Rich, buttery dosa stuffed with spiced potato filling for a truly satisfying bite.",
+        isVeg: true
+      },
+      {
+        id: "ds-4",
+        number: 4,
+        name: "Butter Cheese Dosa",
+        category: "Dosa",
+        price: "180",
+        basePrice: 180,
+        description: "A crispy dosa loaded with rich melted cheese and a smooth, buttery flavour.",
+        isVeg: true
+      },
+      {
+        id: "ds-5",
+        number: 5,
+        name: "Rawa Dosa",
+        category: "Dosa",
+        price: "170",
+        basePrice: 170,
+        description: "Crispy, golden rawa dosa made with a delicate blend of semolina and aromatic spices.",
+        isVeg: true
+      },
+      {
+        id: "ds-6",
+        number: 6,
+        name: "Egg Dosa",
+        category: "Dosa",
+        price: "190",
+        basePrice: 190,
+        description: "Crispy dosa topped with fresh egg and aromatic spices.",
+        isVeg: false
+      },
+      {
+        id: "ds-7",
+        number: 7,
+        name: "Chicken Dosa",
+        category: "Dosa",
+        price: "200",
+        basePrice: 200,
+        description: "A flavourful dosa stuffed with spiced chicken filling and served with a delicious twist.",
+        isVeg: false
+      },
+      {
+        id: "ds-8",
+        number: 8,
+        name: "Keema (Mutton) Dosa",
+        category: "Dosa",
+        price: "230",
+        basePrice: 230,
+        description: "Crispy dosa filled with spicy, juicy minced mutton.",
+        isVeg: false
+      },
+      {
+        id: "ds-9",
+        number: 9,
+        name: "Rawa Masala Dosa",
+        category: "Dosa",
+        price: "180",
+        basePrice: 180,
+        description: "Crispy rawa dosa filled with delicious spiced potato masala.",
+        isVeg: true
+      }
+    ]
+  },
+  {
+    id: "weekend-special",
+    title: "Weekend Special / On Order",
+    subtitle: "Category Collection",
+    icon: "⭐",
+    theme: "fire",
+    images: ["/menu/food/weekend-special.webp"],
+    items: [
+      {
+        id: "ws-1",
+        number: 1,
+        name: "Chicken Mandi",
+        category: "Weekend Special / On Order",
+        price: "699",
+        basePrice: 699,
+        description: "Tender, juicy chicken served with aromatic, mildly spiced Arabian rice.",
+        isVeg: false
+      },
+      {
+        id: "ws-2",
+        number: 2,
+        name: "Mutton Mandi",
+        category: "Weekend Special / On Order",
+        price: "899",
+        basePrice: 899,
+        description: "Slow-cooked, tender mutton served with fragrant, flavourful Arabian rice.",
+        isVeg: false
+      },
+      {
+        id: "ws-3",
+        number: 3,
+        name: "Chicken Hyderabadi Biryani",
+        category: "Weekend Special / On Order",
+        price: "240",
+        basePrice: 240,
+        description: "Aromatic basmati rice layered with tender chicken and authentic Hyderabadi spices, slow-cooked to perfection.",
+        isVeg: false
+      },
+      {
+        id: "ws-4",
+        number: 4,
+        name: "Mutton Hyderabadi Biryani",
+        category: "Weekend Special / On Order",
+        price: "270",
+        basePrice: 270,
+        description: "Tender mutton pieces slow-cooked with aromatic basmati rice, rich Hyderabadi spices and fragrant herbs for an authentic royal flavour.",
+        isVeg: false
+      },
+      {
+        id: "tnv-14",
+        number: 5,
+        name: "Raan Kabab",
+        category: "Weekend Special / On Order",
+        price: "400",
+        basePrice: 400,
+        description: "Whole leg delicacy slow-marinated for a rich and royal experience.",
+        isSignature: true,
+        prepTime: "Approx. 2 Hours",
+        portionNote: "800–900 gm",
+        isVeg: false
       }
     ]
   },
@@ -1695,6 +2044,7 @@ export const menuData: MenuCategory[] = [
     title: "Coffee & Hot Drinks",
     subtitle: "Artisanal Brews Collection",
     icon: "☕",
+    images: ["/menu/beverages/coffee.webp", "/menu/beverages/tea.webp"],
     items: [
       {
         id: "chd-1",
@@ -1843,6 +2193,7 @@ export const menuData: MenuCategory[] = [
     title: "Iced Lattes",
     subtitle: "Chilled Selection",
     icon: "🧊",
+    images: ["/menu/beverages/iced-lattes.webp"],
     items: [
       {
         id: "il-1",
@@ -1915,6 +2266,7 @@ export const menuData: MenuCategory[] = [
     title: "Frappes",
     subtitle: "Blended Ice Delights",
     icon: "🥤",
+    images: ["/menu/beverages/frappes.webp"],
     items: [
       {
         id: "frp-1",
@@ -1963,6 +2315,7 @@ export const menuData: MenuCategory[] = [
     title: "Crush / Slush",
     subtitle: "Ice Coolers Collection",
     icon: "🍹",
+    images: ["/menu/beverages/crush-slush.webp"],
     items: [
       {
         id: "cs-s-1",
@@ -2001,6 +2354,7 @@ export const menuData: MenuCategory[] = [
     title: "Boba Drinks",
     subtitle: "Pearl Teas & Flavors",
     icon: "🧋",
+    images: ["/menu/beverages/boba-drinks.webp"],
     items: [
       {
         id: "bd-1",
@@ -2009,7 +2363,7 @@ export const menuData: MenuCategory[] = [
         category: "Boba Drinks",
         price: "120",
         basePrice: 120,
-        description: "Tropical mango drink with chewy boba pearls.",
+        description: "Sweet, refreshing mango delight with bursting boba.",
         isVeg: true
       },
       {
@@ -2049,6 +2403,7 @@ export const menuData: MenuCategory[] = [
     title: "Mocktails",
     subtitle: "Craft Coolers",
     icon: "🍸",
+    images: ["/menu/beverages/mocktails.webp"],
     items: [
       {
         id: "mck-1",
@@ -2089,6 +2444,56 @@ export const menuData: MenuCategory[] = [
         basePrice: 100,
         description: "Tropical guava mocktail with a refreshing finish.",
         isVeg: true
+      },
+      {
+        id: "mck-5",
+        number: 5,
+        name: "Paan Shot Mocktail",
+        category: "Mocktails",
+        price: "100",
+        basePrice: 100,
+        description: "Refreshing paan-flavoured mocktail with a minty twist.",
+        isVeg: true
+      },
+      {
+        id: "mck-6",
+        number: 6,
+        name: "Strawberry Daiquiri",
+        category: "Mocktails",
+        price: "120",
+        basePrice: 120,
+        description: "Refreshing mint and lime cooler.",
+        isVeg: true
+      },
+      {
+        id: "mck-7",
+        number: 7,
+        name: "Zanzibarry Blue",
+        category: "Mocktails",
+        price: "120",
+        basePrice: 120,
+        description: "Refreshing tropical blue cooler.",
+        isVeg: true
+      },
+      {
+        id: "mck-8",
+        number: 8,
+        name: "Bazaruto Sunset",
+        category: "Mocktails",
+        price: "120",
+        basePrice: 120,
+        description: "Tropical passion fruit and citrus cooler.",
+        isVeg: true
+      },
+      {
+        id: "mck-9",
+        number: 9,
+        name: "Roohafza Mocktail",
+        category: "Mocktails",
+        price: "100",
+        basePrice: 100,
+        description: "Refreshing rose-flavoured mocktail.",
+        isVeg: true
       }
     ]
   },
@@ -2097,6 +2502,7 @@ export const menuData: MenuCategory[] = [
     title: "Milkshakes",
     subtitle: "Creamy Indulgence",
     icon: "🥛",
+    images: ["/menu/beverages/milkshakes.webp"],
     items: [
       {
         id: "mls-1",
@@ -2119,18 +2525,8 @@ export const menuData: MenuCategory[] = [
         isVeg: true
       },
       {
-        id: "mls-3",
-        number: 3,
-        name: "Banana Milkshake",
-        category: "Milkshakes",
-        price: "110",
-        basePrice: 110,
-        description: "Smooth banana shake, rich and refreshing.",
-        isVeg: true
-      },
-      {
         id: "mls-4",
-        number: 4,
+        number: 3,
         name: "Bubble Gum Milkshake",
         category: "Milkshakes",
         price: "110",
@@ -2140,12 +2536,32 @@ export const menuData: MenuCategory[] = [
       },
       {
         id: "mls-5",
-        number: 5,
+        number: 4,
         name: "Coffee Shake",
         category: "Milkshakes",
         price: "110",
         basePrice: 110,
         description: "Creamy coffee-flavored milkshake.",
+        isVeg: true
+      },
+      {
+        id: "mls-3",
+        number: 5,
+        name: "Banana Milkshake",
+        category: "Milkshakes",
+        price: "110",
+        basePrice: 110,
+        description: "Smooth banana shake, rich and refreshing.",
+        isVeg: true
+      },
+      {
+        id: "mls-6",
+        number: 6,
+        name: "Oreo Milkshake",
+        category: "Milkshakes",
+        price: "120",
+        basePrice: 120,
+        description: "A rich and creamy milkshake blended with Oreo cookies, topped with a smooth, chocolatey finish.",
         isVeg: true
       }
     ]
@@ -2155,6 +2571,7 @@ export const menuData: MenuCategory[] = [
     title: "Smoothies",
     subtitle: "Fresh Fruit Blends",
     icon: "🥑",
+    images: ["/menu/beverages/smoothies.webp"],
     items: [
       {
         id: "smt-1",
@@ -2203,6 +2620,8 @@ export const menuData: MenuCategory[] = [
     title: "Fresh Juice",
     subtitle: "Squeezed Fresh",
     icon: "🍊",
+    images: ["/menu/beverages/fresh-juice.webp"],
+    nameSuffix: " Fresh Juice",
     items: [
       {
         id: "fj-1",
@@ -2223,6 +2642,16 @@ export const menuData: MenuCategory[] = [
         basePrice: 130,
         description: "Refreshing juice made from fresh apples.",
         isVeg: true
+      },
+      {
+        id: "fj-3",
+        number: 3,
+        name: "Watermelon Fresh Juice",
+        category: "Fresh Juice",
+        price: "130",
+        basePrice: 130,
+        description: "Refreshing juice made from fresh watermelon.",
+        isVeg: true
       }
     ]
   },
@@ -2231,6 +2660,8 @@ export const menuData: MenuCategory[] = [
     title: "Other Juice",
     subtitle: "Chilled Fruit Nectars",
     icon: "🧃",
+    images: ["/menu/beverages/other-juice.webp"],
+    nameSuffix: " Rhodes Juice",
     items: [
       {
         id: "oj-1",
@@ -2291,6 +2722,16 @@ export const menuData: MenuCategory[] = [
         basePrice: 75,
         description: "Refreshing Rhodes juices served chilled.",
         isVeg: true
+      },
+      {
+        id: "oj-7",
+        number: 7,
+        name: "Red Grape Rhodes Juice",
+        category: "Other Juice",
+        price: "75",
+        basePrice: 75,
+        description: "Refreshing Rhodes juices served chilled.",
+        isVeg: true
       }
     ]
   },
@@ -2299,14 +2740,15 @@ export const menuData: MenuCategory[] = [
     title: "Soft Drinks",
     subtitle: "Cold Sparkling Refreshment",
     icon: "🥤",
+    images: ["/menu/beverages/soft-drinks.webp"],
     items: [
       {
         id: "sd-k-1",
         number: 1,
         name: "Red Bull",
         category: "Soft Drinks",
-        price: "25",
-        basePrice: 25,
+        price: "45",
+        basePrice: 45,
         description: "Energy drink for a quick boost.",
         isVeg: true
       },
@@ -2355,9 +2797,172 @@ export const menuData: MenuCategory[] = [
         number: 6,
         name: "Lemonade",
         category: "Soft Drinks",
+        price: "35",
+        basePrice: 35,
+        description: "Refreshing citrus drink.",
+        isVeg: true
+      },
+      {
+        id: "sd-k-7",
+        number: 7,
+        name: "Fruticana",
+        category: "Soft Drinks",
+        price: "20",
+        basePrice: 20,
+        description: "A refreshing blend of fruity flavours in every sip.",
+        isVeg: true
+      },
+      {
+        id: "sd-k-8",
+        number: 8,
+        name: "Minute Maid",
+        category: "Soft Drinks",
         price: "25",
         basePrice: 25,
-        description: "Refreshing citrus drink.",
+        description: "Refreshing, fruity goodness in every sip.",
+        isVeg: true
+      },
+      {
+        id: "sd-k-9",
+        number: 9,
+        name: "Schweppes",
+        category: "Soft Drinks",
+        price: "35",
+        basePrice: 35,
+        description: "Refreshing fizz with a crisp, sparkling taste in every sip.",
+        isVeg: true
+      },
+      {
+        id: "sd-k-10",
+        number: 10,
+        name: "Sparletta",
+        category: "Soft Drinks",
+        price: "40",
+        basePrice: 40,
+        description: "A refreshing, fizzy delight bursting with fruity flavour.",
+        isVeg: true
+      },
+      {
+        id: "sd-k-11",
+        number: 11,
+        name: "Water (Madzi)",
+        category: "Soft Drinks",
+        price: "15",
+        basePrice: 15,
+        description: "Pure, refreshing water to keep you hydrated.",
+        isVeg: true
+      }
+    ]
+  },
+  {
+    id: "lassi",
+    title: "Lassi",
+    subtitle: "Traditional Yogurt Coolers",
+    icon: "🥛",
+    images: ["/menu/beverages/lassi.webp"],
+    items: [
+      {
+        id: "ls-1",
+        number: 1,
+        name: "Mango Lassi (Sweet)",
+        category: "Lassi",
+        price: "75",
+        basePrice: 75,
+        description: "A creamy blend of ripe mangoes and chilled sweetness in every sip.",
+        isVeg: true
+      },
+      {
+        id: "ls-2",
+        number: 2,
+        name: "Plain Lassi (Sweet)",
+        category: "Lassi",
+        price: "75",
+        basePrice: 75,
+        description: "A refreshing blend of creamy yogurt, lightly sweetened and served chilled for a smooth, traditional taste.",
+        isVeg: true
+      },
+      {
+        id: "ls-3",
+        number: 3,
+        name: "Masala Lassi (Salty)",
+        category: "Lassi",
+        price: "75",
+        basePrice: 75,
+        description: "A refreshing chilled yogurt drink blended with salt and aromatic spices.",
+        isVeg: true
+      },
+      {
+        id: "ls-4",
+        number: 4,
+        name: "Rose Lassi (Sweet)",
+        category: "Lassi",
+        price: "75",
+        basePrice: 75,
+        description: "A fragrant and refreshing yogurt drink infused with rose syrup, offering a delicate floral sweetness.",
+        isVeg: true
+      }
+    ]
+  },
+  {
+    id: "shisha",
+    title: "Shisha",
+    subtitle: "Hookah Flavours",
+    icon: "💨",
+    images: ["/menu/beverages/shisha.webp"],
+    nameSuffix: " Shisha",
+    items: [
+      ...[
+        "Mint",
+        "Lemon Mint",
+        "Grape with Mint",
+        "Pan Raas",
+        "Watermelon",
+        "Kiwi",
+        "Blueberry",
+        "Spear Mint",
+        "Magic Love",
+        "Strawberry",
+        "Mango",
+        "Double Apple",
+        "Grape",
+      ].map((flavour, i): MenuItem => ({
+        id: `sh-${i + 1}`,
+        number: i + 1,
+        name: `${flavour} Shisha`,
+        category: "Shisha",
+        price: "180",
+        basePrice: 180,
+        description: "",
+        isVeg: true
+      })),
+      {
+        id: "sh-14",
+        number: 14,
+        name: "Standard & Customised Flavour",
+        category: "Shisha",
+        price: "230",
+        basePrice: 230,
+        description: "",
+        isVeg: true
+      },
+      {
+        id: "sh-15",
+        number: 15,
+        name: "Extra Flavour",
+        category: "Shisha",
+        price: "80",
+        basePrice: 80,
+        description: "",
+        isVeg: true
+      },
+      {
+        id: "sh-16",
+        number: 16,
+        name: "Extra Coal",
+        category: "Shisha",
+        price: "15",
+        basePrice: 15,
+        description: "",
         isVeg: true
       }
     ]

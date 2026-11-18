@@ -101,7 +101,7 @@ export default function MenuHeroBanner() {
           {...fadeUp(0.55)}
           className="font-sans font-light text-sm md:text-base text-white/70 uppercase tracking-[0.22em] mb-7"
         >
-          30 Category Collections · 150+ Masterpiece Dishes &amp; Beverages
+          34 Category Collections · 250+ Masterpiece Dishes &amp; Beverages
         </motion.p>
 
         {/* Gold divider */}
