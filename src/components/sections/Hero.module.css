@@ -104,36 +104,3 @@
   justify-content: center;
   flex-wrap: wrap;
 }
-
-.scrollIndicator {
-  position: absolute;
-  bottom: 2rem;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 2;
-}
-
-.mouse {
-  width: 26px;
-  height: 42px;
-  border: 2px solid var(--gold-primary);
-  border-radius: 14px;
-  position: relative;
-}
-
-.wheel {
-  width: 4px;
-  height: 8px;
-  background-color: var(--gold-primary);
-  border-radius: 2px;
-  position: absolute;
-  top: 6px;
-  left: 50%;
-  transform: translateX(-50%);
-  animation: scroll 2s infinite;
-}
-
-@keyframes scroll {
-  0% { transform: translate(-50%, 0); opacity: 1; }
-  100% { transform: translate(-50%, 15px); opacity: 0; }
-}

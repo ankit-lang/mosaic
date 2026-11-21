@@ -8,7 +8,7 @@ import { CalendarDays, UtensilsCrossed, Star } from 'lucide-react';
 
 export default function ImmersiveFooterSection() {
   return (
-    <section className="relative w-full overflow-hidden bg-black border-t border-amber-500/20 py-24 sm:py-28">
+    <section className="relative w-full overflow-hidden bg-black border-t border-amber-500/20 py-14 md:py-20">
       {/* ── Ambient Radial Lighting Orbs ───────────────────────── */}
       <div
         aria-hidden

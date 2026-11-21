@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { X, ShoppingBag, Plus, Minus, Trash2, ArrowRight, CheckCircle2, Utensils, Bike, Store } from "lucide-react";
 import { useCart } from "@/context/CartContext";
 import ShinyText from "@/components/react-bits/ShinyText";
+import { placeOrder } from "@/app/actions";
 
 export default function CartDrawer() {
   const { items, isCartOpen, setIsCartOpen, removeItem, updateQuantity, clearCart, subtotal, totalItems } = useCart();
@@ -17,7 +18,10 @@ export default function CartDrawer() {
   const [tableNumber, setTableNumber] = useState("");
   const [address, setAddress] = useState("");
   const [notes, setNotes] = useState("");
+  const [customerEmail, setCustomerEmail] = useState("");
   const [orderId, setOrderId] = useState("");
+  const [submitting, setSubmitting] = useState(false);
+  const [orderError, setOrderError] = useState("");
 
   const deliveryFee = orderMode === "delivery" ? 30 : 0;
   const grandTotal = subtotal + deliveryFee;
@@ -33,11 +37,28 @@ export default function CartDrawer() {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [isCartOpen, setIsCartOpen]);
 
-  const handlePlaceOrder = (e: React.FormEvent) => {
+  const handlePlaceOrder = async (e: React.FormEvent) => {
     e.preventDefault();
-    const generatedId = "MOS-" + Math.floor(100000 + Math.random() * 900000);
-    setOrderId(generatedId);
-    setCheckoutStep("confirmed");
+    if (submitting) return;
+    setSubmitting(true);
+    setOrderError("");
+    const result = await placeOrder({
+      mode: orderMode,
+      name: customerName,
+      phone: customerPhone,
+      email: customerEmail,
+      table: tableNumber,
+      address,
+      notes,
+      items: items.map(i => ({ menuItemId: i.menuItemId, variant: i.selectedVariant, quantity: i.quantity })),
+    }).catch(() => ({ error: "Sorry, we couldn't send your order. Please call or WhatsApp us on +260 771036277." }));
+    setSubmitting(false);
+    if ("orderId" in result && result.orderId) {
+      setOrderId(result.orderId);
+      setCheckoutStep("confirmed");
+    } else {
+      setOrderError(("error" in result && result.error) || "Something went wrong. Please try again.");
+    }
   };
 
   const handleReset = () => {
@@ -204,6 +225,17 @@ export default function CartDrawer() {
                     />
                   </div>
 
+                  <div>
+                    <label className="text-xs uppercase tracking-wider text-neutral-400 mb-1 block">Email (for order confirmation)</label>
+                    <input
+                      type="email"
+                      value={customerEmail}
+                      onChange={(e) => setCustomerEmail(e.target.value)}
+                      placeholder="e.g. you@example.com"
+                      className="w-full bg-neutral-900/80 border border-neutral-800 rounded-xl px-4 py-3 text-white text-sm focus:border-gold outline-none"
+                    />
+                  </div>
+
                   {orderMode === "dine-in" && (
                     <div>
                       <label className="text-xs uppercase tracking-wider text-neutral-400 mb-1 block">Table Number (If Seated)</label>
@@ -261,11 +293,18 @@ export default function CartDrawer() {
                   </div>
                 </div>
 
+                {orderError && (
+                  <p role="alert" className="mb-3 rounded-xl border border-red-500/50 bg-red-950/70 px-4 py-3 text-xs text-red-300">
+                    {orderError}
+                  </p>
+                )}
+
                 <button
                   type="submit"
-                  className="w-full btn-primary py-4 flex items-center justify-center gap-2"
+                  disabled={submitting}
+                  className="w-full btn-primary py-4 flex items-center justify-center gap-2 disabled:opacity-60 disabled:cursor-wait"
                 >
-                  <ShinyText text="Confirm & Send Order" disabled={false} speed={2} className="text-black font-bold" color="#000" shineColor="#fff" />
+                  <ShinyText text={submitting ? "Sending order…" : "Confirm & Send Order"} disabled={submitting} speed={2} className="text-black font-bold" color="#000" shineColor="#fff" />
                   <ArrowRight size={18} />
                 </button>
               </form>

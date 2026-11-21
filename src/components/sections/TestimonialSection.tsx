@@ -68,7 +68,7 @@ export default function TestimonialSection() {
 
   return (
     <section 
-      className="bg-black py-28 relative overflow-hidden border-t border-amber-500/20"
+      className="bg-black py-14 md:py-20 relative overflow-hidden border-t border-amber-500/20"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >
@@ -86,7 +86,7 @@ export default function TestimonialSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-10"
         >
           <span className="text-xs uppercase tracking-[0.4em] bg-gradient-to-r from-amber-200 via-yellow-400 to-amber-500 bg-clip-text text-transparent font-bold flex items-center justify-center gap-2 mb-3">
             <Sparkles size={14} className="text-amber-400" /> Guest Testimonials

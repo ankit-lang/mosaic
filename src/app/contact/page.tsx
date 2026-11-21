@@ -61,14 +61,15 @@ export default function ContactPage() {
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setStatus("loading");
-    const formData = new FormData(e.currentTarget);
+    const form = e.currentTarget; // React clears e.currentTarget after the await below
+    const formData = new FormData(form);
     const result = await submitContact(formData);
 
     if (result.error) {
       setStatus("error");
     } else {
       setStatus("success");
-      e.currentTarget.reset();
+      form.reset();
     }
   }
 

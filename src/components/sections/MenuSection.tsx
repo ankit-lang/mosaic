@@ -82,7 +82,7 @@ export default function MenuSection() {
   };
 
   return (
-    <section id="menu" className="relative py-20 bg-black overflow-hidden border-t border-amber-500/20">
+    <section id="menu" className="relative py-14 md:py-20 bg-black overflow-hidden border-t border-amber-500/20">
       {/* ── Ambient Background Lighting ─────────────────────── */}
       <div
         aria-hidden

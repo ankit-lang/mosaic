@@ -90,7 +90,7 @@ export default function AboutSection() {
         {/* ══════════════════════════════════════════════════════════
             SECTION 1 — EDITORIAL SPLIT: Story + Visual Collage
         ══════════════════════════════════════════════════════════ */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center py-24 pb-16">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center pt-14 md:pt-20 pb-12 md:pb-14">
 
           {/* ─── LEFT: The Philosophy ──────────────────────────── */}
           <motion.div
@@ -217,9 +217,9 @@ export default function AboutSection() {
         {/* ══════════════════════════════════════════════════════════
             SECTION 2 — CUISINE SHOWCASE: Photo-first vertical cards
         ══════════════════════════════════════════════════════════ */}
-        <div className="pb-20">
+        <div className="pb-12 md:pb-14">
           {/* Section header */}
-          <div className="text-center mb-12">
+          <div className="text-center mb-10">
             <span className="text-[11px] uppercase tracking-[0.32em] text-amber-400/80 font-semibold block mb-3">
               Our Cuisine Selection
             </span>
@@ -302,7 +302,7 @@ export default function AboutSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.65 }}
-          className="bg-zinc-900/60 backdrop-blur-xl border border-amber-500/20 shadow-[0_8px_32px_0_rgba(0,0,0,0.4)] rounded-3xl p-8 md:p-12 mb-20 relative overflow-hidden"
+          className="bg-zinc-900/60 backdrop-blur-xl border border-amber-500/20 shadow-[0_8px_32px_0_rgba(0,0,0,0.4)] rounded-3xl p-8 md:p-12 mb-12 md:mb-14 relative overflow-hidden"
         >
           {/* Ambient inner backlight */}
           <div
@@ -374,13 +374,13 @@ export default function AboutSection() {
         {/* ══════════════════════════════════════════════════════════
             SECTION 4 — What Makes Us Different (4 Animated Cards)
         ══════════════════════════════════════════════════════════ */}
-        <div className="mb-24">
+        <div className="mb-12 md:mb-14">
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-center mb-14"
+            className="text-center mb-10"
           >
             <span className="text-[11px] uppercase tracking-[0.32em] text-amber-400/80 font-semibold block mb-3">
               The Mosaic Distinction
@@ -435,7 +435,7 @@ export default function AboutSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
-          className="relative bg-zinc-900/60 backdrop-blur-xl border border-amber-500/20 shadow-[0_8px_32px_0_rgba(0,0,0,0.4)] rounded-3xl p-8 md:p-14 text-center max-w-4xl mx-auto overflow-hidden mb-12"
+          className="relative bg-zinc-900/60 backdrop-blur-xl border border-amber-500/20 shadow-[0_8px_32px_0_rgba(0,0,0,0.4)] rounded-3xl p-8 md:p-14 text-center max-w-4xl mx-auto overflow-hidden mb-14 md:mb-20"
         >
           {/* Subtle gold quotation mark watermark */}
           <Quote className="absolute top-4 left-6 w-28 h-28 text-amber-500/10 pointer-events-none -rotate-12" />

@@ -22,7 +22,7 @@ const images = [
 const PARTICLES = Array.from({ length: 15 }).map((_, i) => ({
   id: i,
   size: ((i * 7) % 6) + 4,
-  x: ((i * 13) % 95) + 2,
+  x: ((i * 13) % 95) + 2, 
   delay: (i * 0.6) % 4,
   duration: ((i * 1.5) % 8) + 10,
 }));
@@ -329,17 +329,6 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* ── Scroll indicator (UNCHANGED) ──────────────────────────── */}
-      <motion.div
-        className={styles.scrollIndicator}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1, delay: 2 }}
-      >
-        <div className={styles.mouse}>
-          <div className={styles.wheel} />
-        </div>
-      </motion.div>
     </section>
   );
 }

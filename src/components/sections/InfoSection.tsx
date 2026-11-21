@@ -41,7 +41,7 @@ const HOURS = [
 
 export default function InfoSection() {
   return (
-    <section id="contact" className="relative bg-black py-24 overflow-hidden border-t border-amber-500/20">
+    <section id="contact" className="relative bg-black py-14 md:py-20 overflow-hidden border-t border-amber-500/20">
       {/* ── Ambient Radial Glow ────────────────────────────── */}
       <div
         aria-hidden
@@ -57,7 +57,7 @@ export default function InfoSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-14"
+          className="text-center mb-10"
         >
           <span className="inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.3em] text-amber-400/80 font-semibold mb-3 block">
             <span className="w-1.5 h-1.5 rounded-full bg-amber-400 inline-block" /> Visit MOSAIC
